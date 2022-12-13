@@ -3,7 +3,7 @@
 Graph Generators
 ****************
 
-Generators for graphs, such the graphs (topologies) of D-Wave System QPUs.
+Generators for graphs, such as the graphs (topologies) of D-Wave System QPUs.
 
 .. currentmodule:: dwave_networkx
 
@@ -17,12 +17,10 @@ D-Wave Systems
    pegasus_graph
    zephyr_graph
 
-
-	     
 Example
 ~~~~~~~
 
-This example uses the the `chimera_graph()` function to create a Chimera lattice
+This example uses the `chimera_graph()` function to create a Chimera lattice
 of size (1, 1, 4), which is a single unit cell in Chimera topology, and
 the `find_chimera()` function to determine the Chimera indices.
 
