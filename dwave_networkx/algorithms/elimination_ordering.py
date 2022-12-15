@@ -81,7 +81,7 @@ def is_almost_simplicial(G, n):
     Returns
     -------
     is_almost_simplicial : bool
-        True if all but one of its neighbors induce a clique
+        True if all but one of its neighbors induce a clique.
 
     Examples
     --------
@@ -126,7 +126,7 @@ def minor_min_width(G):
 
     References
     ----------
-    Based on the algorithm presented in [GD]_
+    Based on the algorithm presented in [GD]_.
 
     """
     # we need only deal with the adjacency structure of G. We will also
@@ -196,7 +196,7 @@ def min_fill_heuristic(G):
 
     References
     ----------
-    Based on the algorithm presented in [GD]_
+    Based on the algorithm presented in [GD]_.
 
     """
     # we need only deal with the adjacency structure of G. We will also
@@ -266,7 +266,7 @@ def min_width_heuristic(G):
 
     References
     ----------
-    Based on the algorithm presented in [GD]_
+    Based on the algorithm presented in [GD]_.
 
     """
     # we need only deal with the adjacency structure of G. We will also
@@ -326,7 +326,7 @@ def max_cardinality_heuristic(G):
 
     References
     ----------
-    Based on the algorithm presented in [GD]_
+    Based on the algorithm presented in [GD]_.
 
     """
     # we need only deal with the adjacency structure of G. We will also
@@ -370,12 +370,12 @@ def max_cardinality_heuristic(G):
 
 
 def _elim_adj(adj, n):
-    """eliminates a variable, acting on the adj matrix of G,
+    """Eliminates a variable, acting on the adj matrix of G,
     returning set of edges that were added.
 
     Parameters
     ----------
-    adj: dict
+    adj : dict
         A dict of the form {v: neighbors, ...} where v are
         vertices in a graph and neighbors is a set.
 
@@ -414,7 +414,7 @@ def elimination_order_width(G, order):
     Returns
     -------
     treewidth : int
-        The width of the tree decomposition induced by  order.
+        The width of the tree decomposition induced by order.
 
     Examples
     --------
@@ -497,7 +497,7 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
 
     References
     ----------
-    Based on the algorithm presented in [GD]_
+    Based on the algorithm presented in [GD]_.
     """
     # empty graphs have treewidth 0 and the nodes can be eliminated in
     # any order

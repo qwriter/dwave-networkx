@@ -31,7 +31,7 @@ __all__ = ["is_vertex_coloring",
 
 @nx.utils.decorators.nodes_or_number(1)
 def vertex_color_qubo(G, colors):
-    """Return the QUBO with ground states corresponding to a vertex coloring.
+    """Returns the QUBO with ground states corresponding to a vertex coloring.
 
     If `V` is the set of nodes, `E` is the set of edges and `C` is the set of
     colors the resulting qubo will have:
@@ -113,13 +113,13 @@ def vertex_color(G, colors, sampler=None, **sampler_args):
         `set_default_sampler` function.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
     coloring : dict
         A coloring for each vertex in G such that no adjacent nodes
-        share the same color. A dict of the form {node: color, ...}
+        share the same color. A dict of the form {node: color, ...}.
 
 
     References
@@ -193,7 +193,7 @@ def _chromatic_number_lower_bound(G):
 
 
 def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
-    """Return a QUBO with ground states corresponding to a minimum vertex
+    """Returns a QUBO with ground states corresponding to a minimum vertex
     coloring.
 
     Vertex coloring is the problem of assigning a color to the
@@ -218,7 +218,7 @@ def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
         is calculated.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -298,13 +298,13 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
         is calculated.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
     coloring : dict
         A coloring for each vertex in G such that no adjacent nodes
-        share the same color. A dict of the form {node: color, ...}
+        share the same color. A dict of the form {node: color, ...}.
 
     References
     ----------

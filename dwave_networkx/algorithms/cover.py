@@ -52,7 +52,7 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
         Lagrange parameter to weight constraints versus objective.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -109,7 +109,7 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
         Lagrange parameter to weight constraints versus objective.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------

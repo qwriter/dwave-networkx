@@ -30,8 +30,8 @@ def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
     to the subgraph). A maximum clique is a clique of the largest
     possible size in a given graph.
 
-    This function works by finding the maximum independent set of the compliment
-    graph of the given graph G which is equivalent to finding maximum clique.
+    This function works by finding the maximum independent set of the complement
+    graph of the given graph G which is equivalent to finding a maximum clique.
     It defines a QUBO with ground states corresponding
     to a maximum weighted independent set and uses the sampler to sample from it.
 
@@ -55,7 +55,7 @@ def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
         versus objective (largest set possible).
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -99,8 +99,8 @@ def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
     vertices in a maximum clique in G. The intersection number of
     G is the smallest number of cliques that together cover all edges of G.
 
-    This function works by finding the maximum independent set of the compliment
-    graph of the given graph G which is equivalent to finding maximum clique.
+    This function works by finding the maximum independent set of the complement
+    graph of the given graph G which is equivalent to finding a maximum clique.
     It defines a QUBO with ground states corresponding
     to a maximum weighted independent set and uses the sampler to sample from it.
 
@@ -124,7 +124,7 @@ def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
         versus objective (largest set possible).
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
