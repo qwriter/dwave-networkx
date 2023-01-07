@@ -1,5 +1,6 @@
 .. _generators_dnx:
 
+****************
 Graph Generators
 ****************
 

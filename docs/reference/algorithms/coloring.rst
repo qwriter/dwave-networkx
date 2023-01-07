@@ -3,7 +3,7 @@ Coloring
 ********
 
 Graph coloring is the problem of assigning a color to the vertices of a graph
-in a way that no adjacent vertices have the same color.
+in a way such that no adjacent vertices have the same color.
 
 Example
 -------

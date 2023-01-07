@@ -84,7 +84,7 @@ def vertex_color_qubo(G, colors):
 
 @binary_quadratic_model_sampler(2)
 def vertex_color(G, colors, sampler=None, **sampler_args):
-    """Returns an approximate vertex coloring.
+    """Return an approximate vertex coloring.
 
     Vertex coloring is the problem of assigning a color to the
     vertices of a graph in a way that no adjacent vertices have the
@@ -120,12 +120,6 @@ def vertex_color(G, colors, sampler=None, **sampler_args):
     coloring : dict
         A coloring for each vertex in G such that no adjacent nodes
         share the same color. A dict of the form {node: color, ...}.
-
-
-    References
-    ----------
-    .. [DWMP] Dahl, E., "Programming the D-Wave: Map Coloring Problem",
-       https://www.dwavesys.com/media/htfgw5bk/map-coloring-wp2.pdf
 
     Notes
     -----
@@ -193,7 +187,7 @@ def _chromatic_number_lower_bound(G):
 
 
 def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
-    """Returns a QUBO with ground states corresponding to a minimum vertex
+    """Return a QUBO with ground states corresponding to a minimum vertex
     coloring.
 
     Vertex coloring is the problem of assigning a color to the
@@ -211,7 +205,7 @@ def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
 
     chromatic_lb : int, optional
          A lower bound on the chromatic number. If one is not provided, a
-         bound is calulcated.
+         bound is calculated.
 
     chromatic_ub : int, optional
         An upper bound on the chromatic number. If one is not provided, a bound
@@ -264,7 +258,7 @@ def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
 @binary_quadratic_model_sampler(1)
 def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
                      **sampler_args):
-    """Returns an approximate minimum vertex coloring.
+    """Return an approximate minimum vertex coloring.
 
     Vertex coloring is the problem of assigning a color to the
     vertices of a graph in a way that no adjacent vertices have the
@@ -291,7 +285,7 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
 
     chromatic_lb : int, optional
          A lower bound on the chromatic number. If one is not provided, a
-         bound is calulcated.
+         bound is calculated.
 
     chromatic_ub : int, optional
         An upper bound on the chromatic number. If one is not provided, a bound
@@ -305,11 +299,6 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
     coloring : dict
         A coloring for each vertex in G such that no adjacent nodes
         share the same color. A dict of the form {node: color, ...}.
-
-    References
-    ----------
-    .. [DWMP] Dahl, E., "Programming the D-Wave: Map Coloring Problem",
-       https://www.dwavesys.com/media/htfgw5bk/map-coloring-wp2.pdf
 
     Notes
     -----
@@ -333,11 +322,10 @@ min_vertex_coloring = min_vertex_color
 
 
 def is_cycle(G):
-    """Determines whether the given graph is a cycle or circle graph.
+    """Determine whether the given graph is a cycle or circle graph.
 
-    A cycle graph or circular graph is a graph that consists of a single cycle.
-
-    https://en.wikipedia.org/wiki/Cycle_graph
+    A 'cycle graph <https://en.wikipedia.org/wiki/Cycle_graph>`_
+    or circular graph is a graph that consists of a single cycle.
 
     Parameters
     ----------
@@ -378,7 +366,7 @@ def is_cycle(G):
 
 
 def is_vertex_coloring(G, coloring):
-    """Determines whether the given coloring is a vertex coloring of graph G.
+    """Determine whether the given coloring is a vertex coloring of graph G.
 
     Parameters
     ----------

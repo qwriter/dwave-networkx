@@ -2,10 +2,10 @@
 Introduction
 ============
 
-D-Wave NetworkX provides tools for working with :term:`Chimera` and :term:`Pegasus`
-graphs and implementations of graph-theory algorithms on the D-Wave system and other
-binary quadratic model :term:`sampler`\ s; for example, functions such as
-:meth:`~dwave_networkx.drawing.chimera_layout.draw_chimera`
+D-Wave NetworkX provides tools for working with :term:`Chimera`, :term:`Pegasus`,
+and :term:`Zephyr` graphs and implementations of graph-theory algorithms
+on the D-Wave system and other binary quadratic model :term:`sampler`\ s;
+for example, functions such as :meth:`~dwave_networkx.drawing.chimera_layout.draw_chimera`
 provide easy visualization for Chimera graphs; functions such
 as :meth:`~dwave_networkx.algorithms.max_cut.maximum_cut` 
 or :meth:`~dwave_networkx.algorithms.cover.min_vertex_cover` provide graph algorithms useful to
@@ -18,7 +18,7 @@ and return an ``iterable`` of samples in order of increasing energy. You can set
 a default sampler using the :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
 * For an introduction to quantum processing unit (QPU) topologies such as the
-  Chimera and Pegasus graphs, see :std:doc:`Topology <oceandocs:concepts/topology>`.
+  Chimera, Pegasus, and Zephyr graphs, see :std:doc:`Topology <oceandocs:concepts/topology>`.
 * For an introduction to binary quadratic models (BQMs), see
   :std:doc:`Binary Quadratic Models <oceandocs:concepts/bqm>`.
 * For an introduction to samplers, see

@@ -24,7 +24,7 @@ Graph Indexing
 --------------
 
 See :ref:`index_conversion_classes` on instantiating the needed lattice size
-and setting correct domain and range for coordinates in a QPU working graph.
+and setting the correct domain and range for coordinates in a QPU working graph.
 
 For the iterator versions of these functions, see the code.
 

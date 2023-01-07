@@ -101,7 +101,7 @@ of nodes of a simple 5-node graph on a small Pegasus lattice.
 	:scale: 60 %
 	:alt: Graph H overlaid on a Pegasus lattice size 2.
 
-	Graph H (blue) overlaid on a small Pegasus lattice(yellow nodes and black edges).
+	Graph H (blue) overlaid on a small Pegasus lattice (yellow nodes and black edges).
 
 Zephyr Graph Functions
 ----------------------

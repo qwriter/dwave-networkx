@@ -22,9 +22,9 @@ __all__ = ["maximum_clique", "clique_number", "is_clique"]
 @binary_quadratic_model_sampler(1)
 def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
     """
-    Returns an approximate maximum clique.
+    Return an approximate maximum clique.
     A clique in an undirected graph, G = (V, E), is a subset of the vertex set
-    :math:`C \subseteq V` such that for every two vertices in C there exists an edge
+    :math:`C \subseteq V` such that for every two vertices in C, there exists an edge
     connecting the two. This is equivalent to saying that the subgraph
     induced by C is complete (in some cases, the term clique may also refer
     to the subgraph). A maximum clique is a clique of the largest
@@ -78,8 +78,7 @@ def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
 
     `QUBO on Wikipedia <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_
 
-    .. [AL] Lucas, A. (2014). Ising formulations of many NP problems.
-       Frontiers in Physics, Volume 2, Article 5.
+    Lucas. 2014. [AL]_
     """
     if G is None:
         raise ValueError("Expected NetworkX graph!")
@@ -93,7 +92,7 @@ def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
 @binary_quadratic_model_sampler(1)
 def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
     """
-    Returns the number of vertices in the maximum clique of a graph.
+    Return the number of vertices in the maximum clique of a graph.
     A maximum clique is a clique of the largest possible size in a given graph.
     The clique number math:`\omega(G)` of a graph G is the number of
     vertices in a maximum clique in G. The intersection number of
@@ -146,7 +145,7 @@ def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
     return len(maximum_clique(G, sampler, lagrange, **sampler_args))
 
 def is_clique(G, clique_nodes):
-    """Determines whether the given nodes form a clique.
+    """Determine whether the given nodes form a clique.
 
     A clique is a subset of nodes of an undirected graph such that every two
     distinct nodes in the clique are adjacent.
@@ -170,7 +169,7 @@ def is_clique(G, clique_nodes):
     This example checks two sets of nodes, both derived from a
     single Chimera unit cell, for an independent set. The first set is
     the horizontal tile's nodes; the second has nodes from the horizontal and
-    verical tiles.
+    vertical tiles.
 
     >>> import dwave_networkx as dnx
     >>> G = dnx.chimera_graph(1, 1, 4)

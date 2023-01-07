@@ -13,7 +13,7 @@ of its member pairs.
 
    Independent sets for a Chimera unit cell: the nodes of both the blue set
    of vertices (the horizontal tile of the Chimera unit cell) and the red set
-   (vertical tile) are independent sets of the graph, with no blue node adjacent
+   (vertical tile) are independent sets of the graph; that is, no blue node is adjacent
    to another blue node and likewise for red nodes.
 
 .. automodule:: dwave_networkx.algorithms.independent_set

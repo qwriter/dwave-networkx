@@ -1,7 +1,8 @@
 .. _reference_dnx:
 
+***********************
 Reference Documentation
-*************************
+***********************
 
    :Release: |release|
    :Date: |today|

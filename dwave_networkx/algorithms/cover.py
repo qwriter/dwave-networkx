@@ -20,10 +20,12 @@ __all__ = ['min_weighted_vertex_cover', 'min_vertex_cover', 'is_vertex_cover']
 
 @binary_quadratic_model_sampler(2)
 def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **sampler_args):
-    """Returns an approximate minimum weighted vertex cover.
+    """Return an approximate minimum weighted vertex cover.
 
-    Defines a QUBO with ground states corresponding to a minimum weighted
-    vertex cover and uses the sampler to sample from it.
+    Defines a `QUBO <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_
+    with ground states corresponding to a minimum weighted
+    `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
+    and uses the sampler to sample from it.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set. A minimum weighted
@@ -32,6 +34,7 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
     Parameters
     ----------
     G : NetworkX graph
+        The graph on which to find a minimum weighted vertex cover.
 
     weight : string, optional (default None)
         If None, every node has equal weight. If a string, use this node
@@ -57,7 +60,7 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
     Returns
     -------
     vertex_cover : list
-       List of nodes that the form a the minimum weighted vertex cover, as
+       List of nodes that the form the minimum weighted vertex cover, as
        determined by the given sampler.
 
     Notes
@@ -66,13 +69,7 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
     function does not attempt to confirm the quality of the returned
     sample.
 
-    https://en.wikipedia.org/wiki/Vertex_cover
-
-    https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization
-
-    References
-    ----------
-    Based on the formulation presented in [AL]_
+    Based on the formulation presented in [AL]_.
 
     """
     indep_nodes = set(maximum_weighted_independent_set(G, weight, sampler, lagrange, **sampler_args))
@@ -81,10 +78,11 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
 
 @binary_quadratic_model_sampler(1)
 def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
-    """Returns an approximate minimum vertex cover.
+    """Return an approximate minimum vertex cover.
 
     Defines a QUBO with ground states corresponding to a minimum
-    vertex cover and uses the sampler to sample from it.
+    `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
+    and uses the sampler to sample from it.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set. A minimum vertex cover
@@ -98,8 +96,9 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
     sampler
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
-        equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
+        equation or a
+        `Quadratic Unconstrained Binary Optimization Problem (QUBO) <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_.
+        A sampler is expected to have a 'sample_qubo'
         and 'sample_ising' method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
@@ -141,19 +140,15 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
 
     References
     ----------
-    https://en.wikipedia.org/wiki/Vertex_cover
 
-    https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization
-
-    .. [AL] Lucas, A. (2014). Ising formulations of many NP problems.
-       Frontiers in Physics, Volume 2, Article 5.
+    Lucas 2014. [AL]_
 
     """
     return min_weighted_vertex_cover(G, None, sampler, lagrange, **sampler_args)
 
 
 def is_vertex_cover(G, vertex_cover):
-    """Determines whether the given set of vertices is a vertex cover of graph G.
+    """Determine whether the given set of vertices is a vertex cover of graph G.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set.
