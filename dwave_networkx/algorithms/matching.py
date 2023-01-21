@@ -31,11 +31,11 @@ __all__ = ['is_matching',
 
 
 def matching_bqm(G):
-    """Find a binary quadratic model for the graph's matchings.
+    """Find a :term:`binary quadratic model` for the graph's matchings.
 
     A matching is a subset of edges in which no node occurs more than
     once. This function returns a binary quadratic model (BQM) with ground
-    states corresponding to the possible matchings of G.
+    states corresponding to the possible matchings of `G`.
 
     Finding valid matchings can be done in polynomial time, so finding matching
     with BQMs is generally inefficient.
@@ -48,9 +48,9 @@ def matching_bqm(G):
 
     Returns
     -------
-    bqm : :class:`dimod.BinaryQuadraticModel`
+    bqm : :class:`dimod.binary.BinaryQuadraticModel`
         A binary quadratic model with ground states corresponding to a
-        matching. The variables of the BQM are the edges of `G` as frozensets.
+        matching. The variables of the BQM are the edges of ``G`` as frozensets.
         The BQM's ground state energy is 0 by construction.
         The energy of the first excited state is 1.
 
@@ -71,13 +71,13 @@ def matching_bqm(G):
 
 
 def maximal_matching_bqm(G, lagrange=None):
-    """Find a binary quadratic model for the graph's maximal matchings.
+    """Find a :term:`binary quadratic model` for the graph's maximal matchings.
 
     A matching is a subset of edges in which no node occurs more than
-    once. A maximal matching is one in which no edges from G can be
+    once. A maximal matching is one in which no edges from ``G`` can be
     added without violating the matching rule.
     This function returns a binary quadratic model (BQM) with ground
-    states corresponding to the possible maximal matchings of G.
+    states corresponding to the possible maximal matchings of ``G``.
 
     Finding maximal matchings can be done in polynomial time, so finding
     maximal matching with BQMs is generally inefficient.
@@ -97,7 +97,7 @@ def maximal_matching_bqm(G, lagrange=None):
     -------
     bqm : :class:`dimod.BinaryQuadraticModel`
         A binary quadratic model with ground states corresponding to a maximal
-        matching. The variables of the BQM are the edges of `G` as frozensets.
+        matching. The variables of the BQM are the edges of ``G`` as frozensets.
         The BQM's ground state energy is 0 by construction.
 
     """
@@ -133,14 +133,14 @@ def maximal_matching_bqm(G, lagrange=None):
 
 
 def min_maximal_matching_bqm(G, maximal_lagrange=2, matching_lagrange=None):
-    """Find a binary quadratic model for the graph's minimum maximal matchings.
+    """Find a :term:`binary quadratic model` for the graph's minimum maximal matchings.
 
     A matching is a subset of edges in which no node occurs more than
-    once. A maximal matching is one in which no edges from G can be
+    once. A maximal matching is one in which no edges from ``G`` can be
     added without violating the matching rule. A minimum maximal matching
     is a maximal matching that contains the smallest possible number of edges.
     This function returns a binary quadratic model (BQM) with ground
-    states corresponding to the possible maximal matchings of G.
+    states corresponding to the possible maximal matchings of ``G``.
 
     Parameters
     ----------
@@ -158,10 +158,10 @@ def min_maximal_matching_bqm(G, maximal_lagrange=2, matching_lagrange=None):
 
     Returns
     -------
-    bqm : :class:`dimod.BinaryQuadraticModel`
+    bqm : :class:`dimod.binary.BinaryQuadraticModel`
         A binary quadratic model with ground states corresponding to a
         minimum maximal matching. The variables of the BQM are the edges
-        of `G` as frozensets.
+        of ``G`` as frozensets.
 
     """
 
@@ -180,17 +180,19 @@ def min_maximal_matching_bqm(G, maximal_lagrange=2, matching_lagrange=None):
 
 @binary_quadratic_model_sampler(1)
 def maximal_matching(G, sampler=None, **sampler_args):
-    """Finds an approximate maximal matching.
+    """Find an approximate maximal matching.
 
-    Defines a QUBO with ground states corresponding to a maximal
-    matching and uses the sampler to sample from it.
+    Defines a :term:`QUBO` with ground states corresponding to a maximal
+    matching and uses the :term:`sampler` to sample from it.
 
-    A matching is a subset of edges in which no node occurs more than
-    once. A maximal matching is one in which no edges from G can be
+    A `matching <https://w.wiki/r9s>`_ is a subset of edges in which no node occurs more than
+    once. A maximal matching is one in which no edges from ``G`` can be
     added without violating the matching rule.
 
     Finding maximal matchings can be done is polynomial time, so this method
     is only useful pedagogically.
+
+    This algorithm is based on the formulation in [AL]_.
 
     Parameters
     ----------
@@ -199,13 +201,13 @@ def maximal_matching(G, sampler=None, **sampler_args):
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
         Additional keyword parameters are passed to the sampler.
@@ -220,16 +222,6 @@ def maximal_matching(G, sampler=None, **sampler_args):
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    `Matching on Wikipedia <https://w.wiki/r9s>`_
-
-    `QUBO on Wikipedia <https://w.wiki/r9t>`_
-
-    Based on the formulation presented in [AL]_
-
     """
     if not G.edges:
         return set()
@@ -244,15 +236,17 @@ def maximal_matching(G, sampler=None, **sampler_args):
 
 @binary_quadratic_model_sampler(1)
 def min_maximal_matching(G, sampler=None, **sampler_args):
-    """Returns an approximate minimum maximal matching.
+    """Return an approximate minimum maximal matching.
 
-    Defines a QUBO with ground states corresponding to a minimum
-    maximal matching and uses the sampler to sample from it.
+    Defines a :term:`QUBO` with ground states corresponding to a minimum
+    maximal matching and uses the :term:`sampler` to sample from it.
 
-    A matching is a subset of edges in which no node occurs more than
-    once. A maximal matching is one in which no edges from G can be
+    A `matching <https://w.wiki/r9s>`_ is a subset of edges in which no node occurs more than
+    once. A maximal matching is one in which no edges from ``G`` can be
     added without violating the matching rule. A minimum maximal
-    matching is the smallest maximal matching for G.
+    matching is the smallest maximal matching for ``G``.
+
+    This algorithm is based on the formulation in [AL]_.
 
     Parameters
     ----------
@@ -263,11 +257,11 @@ def min_maximal_matching(G, sampler=None, **sampler_args):
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
         Additional keyword parameters are passed to the sampler.
@@ -281,7 +275,7 @@ def min_maximal_matching(G, sampler=None, **sampler_args):
     -------
     This example uses a sampler from
     `dimod <https://github.com/dwavesystems/dimod>`_ to find a minimum maximal
-    matching for a Chimera unit cell.
+    matching for a :term:`Chimera` unit cell.
 
     >>> import dimod
     >>> sampler = dimod.ExactSolver()
@@ -293,17 +287,6 @@ def min_maximal_matching(G, sampler=None, **sampler_args):
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    `Matching on Wikipedia <https://w.wiki/r9s>`_
-
-    `QUBO on Wikipedia <https://w.wiki/r9t>`_
-
-    .. [AL] Lucas, A. (2014). Ising formulations of many NP problems.
-       Frontiers in Physics, Volume 2, Article 5.
-
     """
     if not G.edges:
         return set()

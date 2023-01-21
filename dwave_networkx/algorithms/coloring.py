@@ -31,10 +31,10 @@ __all__ = ["is_vertex_coloring",
 
 @nx.utils.decorators.nodes_or_number(1)
 def vertex_color_qubo(G, colors):
-    """Returns the QUBO with ground states corresponding to a vertex coloring.
+    """Return the :term:`QUBO` with ground states corresponding to a vertex coloring.
 
-    If `V` is the set of nodes, `E` is the set of edges and `C` is the set of
-    colors the resulting qubo will have:
+    If :math:`V` is the set of nodes, :math:`E` is the set of edges and math:`C` is the set of
+    colors, the resulting QUBO will have the following:
 
     * :math:`|V|*|C|` variables/nodes
     * :math:`|V|*|C|*(|C| - 1) / 2 + |E|*|C|` interactions/edges
@@ -47,16 +47,16 @@ def vertex_color_qubo(G, colors):
         The graph on which to find a minimum vertex coloring.
 
     colors : int/sequence
-        The colors. If an int, the colors are labelled `[0, n)`. The number of
+        The colors. If an :code:`int`, the colors are labelled ``[0, n)``. The number of
         colors must be greater or equal to the chromatic number of the graph.
 
     Returns
     -------
     QUBO : dict
         The QUBO with ground states corresponding to valid colorings of the
-        graph. The QUBO variables are labelled `(v, c)` where `v` is a node
-        in `G` and `c` is a color. In the ground state of the QUBO, a variable
-        `(v, c)` has value 1 if `v` should be colored `c` in a valid coloring.
+        graph. The QUBO variables are labelled :code``(v, c)`` where ``v`` is a node
+        in ``G`` and ``c`` is a color. In the ground state of the QUBO, a variable
+        ``(v, c)`` has value 1 if ``v`` should be colored ``c`` in a valid coloring.
 
 
     """
@@ -90,8 +90,8 @@ def vertex_color(G, colors, sampler=None, **sampler_args):
     vertices of a graph in a way that no adjacent vertices have the
     same color.
 
-    Defines a QUBO [DWMP]_ with ground states corresponding to valid
-    vertex colorings and uses the sampler to sample from it.
+    Defines a :term:`QUBO` [DWMP]_ with ground states corresponding to valid
+    vertex colorings and uses the :term:`sampler` to sample from it.
 
     Parameters
     ----------
@@ -99,18 +99,18 @@ def vertex_color(G, colors, sampler=None, **sampler_args):
         The graph on which to find a minimum vertex coloring.
 
     colors : int/sequence
-        The colors. If an int, the colors are labelled `[0, n)`. The number of
+        The colors. If an :code:`int`, the colors are labelled ``[0, n)``. The number of
         colors must be greater or equal to the chromatic number of the graph.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
         Additional keyword parameters to pass to the sampler.
@@ -118,8 +118,8 @@ def vertex_color(G, colors, sampler=None, **sampler_args):
     Returns
     -------
     coloring : dict
-        A coloring for each vertex in G such that no adjacent nodes
-        share the same color. A dict of the form {node: color, ...}.
+        A coloring for each vertex in ``G`` such that no adjacent nodes
+        share the same color. A dict of the form :code:`{node: color, ...}`.
 
     Notes
     -----
@@ -187,7 +187,7 @@ def _chromatic_number_lower_bound(G):
 
 
 def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
-    """Return a QUBO with ground states corresponding to a minimum vertex
+    """Return a :term:`QUBO` with ground states corresponding to a minimum vertex
     coloring.
 
     Vertex coloring is the problem of assigning a color to the
@@ -196,7 +196,7 @@ def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
     the vertex coloring problem using the smallest number of colors.
 
     Defines a QUBO [DWMP]_ with ground states corresponding to minimum
-    vertex colorings and uses the sampler to sample from it.
+    vertex colorings and uses the :term:`sampler` to sample from it.
 
     Parameters
     ----------
@@ -218,9 +218,9 @@ def min_vertex_color_qubo(G, chromatic_lb=None, chromatic_ub=None):
     -------
     QUBO : dict
         The QUBO with ground states corresponding to minimum colorings of the
-        graph. The QUBO variables are labelled `(v, c)` where `v` is a node
-        in `G` and `c` is a color. In the ground state of the QUBO, a variable
-        `(v, c)` has value 1 if `v` should be colored `c` in a valid coloring.
+        graph. The QUBO variables are labelled ``(v, c)`` where ``v`` is a node
+        in ``G`` and ``c`` is a color. In the ground state of the QUBO, a variable
+        ``(v, c)`` has value ``1`` if ``v`` should be colored ``c`` in a valid coloring.
 
     """
 
@@ -265,8 +265,8 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
     same color. A minimum vertex coloring is the problem of solving
     the vertex coloring problem using the smallest number of colors.
 
-    Defines a QUBO [DWMP]_ with ground states corresponding to minimum
-    vertex colorings and uses the sampler to sample from it.
+    Defines a :term:`QUBO` [DWMP]_ with ground states corresponding to minimum
+    vertex colorings and uses the :term:`sampler` to sample from it.
 
     Parameters
     ----------
@@ -275,13 +275,13 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     chromatic_lb : int, optional
          A lower bound on the chromatic number. If one is not provided, a
@@ -297,8 +297,8 @@ def min_vertex_color(G, sampler=None, chromatic_lb=None, chromatic_ub=None,
     Returns
     -------
     coloring : dict
-        A coloring for each vertex in G such that no adjacent nodes
-        share the same color. A dict of the form {node: color, ...}.
+        A coloring for each vertex in ``G`` such that no adjacent nodes
+        share the same color. A dict of the form :code:`{node: color, ...}`.
 
     Notes
     -----
@@ -334,7 +334,7 @@ def is_cycle(G):
     Returns
     -------
     is_cycle : bool
-        True if the graph consists of a single cycle.
+        :code:`True`, if the graph consists of a single cycle.
 
     """
     if len(G) <= 2:
@@ -366,7 +366,7 @@ def is_cycle(G):
 
 
 def is_vertex_coloring(G, coloring):
-    """Determine whether the given coloring is a vertex coloring of graph G.
+    """Determine whether the given coloring is a vertex coloring of graph ``G``.
 
     Parameters
     ----------
@@ -374,21 +374,21 @@ def is_vertex_coloring(G, coloring):
         The graph on which the vertex coloring is applied.
 
     coloring : dict
-        A coloring of the nodes of G. Should be a dict of the form
-        {node: color, ...}.
+        A coloring of the nodes of ``G``. Should be a dict of the form
+        :code:`{node: color, ...}`.
 
     Returns
     -------
     is_vertex_coloring : bool
-        True if the given coloring defines a vertex coloring; that is, no
+        :code:`True`, if the given coloring defines a vertex coloring; that is, no
         two adjacent vertices share a color.
 
     Example
     -------
-    This example colors checks two colorings for a graph, G, of a single Chimera
-    unit cell. The first uses one color (0) for the four horizontal qubits
-    and another (1) for the four vertical qubits, in which case there are
-    no adjacencies; the second coloring swaps the color of one node.
+    This example colors checks two colorings for a graph, G, of a single :term:`Chimera`
+    unit cell. The first uses one color (:math:`0`) for the four horizontal qubits
+    and another (:math:`1`) for the four vertical qubits, in which case, there are
+    no adjacencies. The second coloring swaps the color of one node.
 
     >>> G = dnx.chimera_graph(1,1,4)
     >>> colors = {0: 0, 1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1, 7: 1}

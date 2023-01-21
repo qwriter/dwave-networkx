@@ -54,7 +54,7 @@ Documentation
   Leap <https://cloud.dwavesys.com/leap/>
   D-Wave System Documentation <https://docs.dwavesys.com/docs/latest/index.html>
 
-Indices and tables
+Indices and Tables
 ------------------
 
 * :ref:`genindex`

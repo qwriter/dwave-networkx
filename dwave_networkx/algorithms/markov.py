@@ -55,31 +55,31 @@ __all__ = ['sample_markov_network', 'markov_network_bqm']
 def sample_markov_network(MN, sampler=None, fixed_variables=None,
                           return_sampleset=False,
                           **sampler_args):
-    """Samples from a markov network using the provided sampler.
+    """Sample from a Markov network using the provided :term:`sampler`.
 
     Parameters
     ----------
     G : NetworkX graph
-        A Markov Network as returned by :func:`.markov_network`
+        A Markov network as returned by :func:`.markov_network`
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (:term:`QUBO`). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     fixed_variables : dict
-        A dictionary of variable assignments to be fixed in the markov network.
+        A dictionary of variable assignments to be fixed in the Markov network.
 
-    return_sampleset : bool (optional, default=False)
-        If True, returns a :obj:`dimod.SampleSet` rather than a list of samples.
+    return_sampleset : bool, optional (default :code:`False`)
+        If :code:`True`, returns a :obj:`dimod.SampleSet` rather than a list of samples.
 
     **sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -156,17 +156,17 @@ def sample_markov_network(MN, sampler=None, fixed_variables=None,
 
 
 def markov_network_bqm(MN):
-    """Construct a binary quadratic model for a markov network.
+    """Construct a binary quadratic model for a Markov network.
 
 
     Parameters
     ----------
     G : NetworkX graph
-        A Markov Network as returned by :func:`.markov_network`
+        A Markov network as returned by :func:`.markov_network`.
 
     Returns
     -------
-    bqm : :obj:`dimod.BinaryQuadraticModel`
+    bqm : :obj:`dimod.binary.BinaryQuadraticModel`
         A binary quadratic model.
 
     """

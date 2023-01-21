@@ -19,34 +19,34 @@ __all__ = ["structural_imbalance"]
 
 @binary_quadratic_model_sampler(1)
 def structural_imbalance(S, sampler=None, **sampler_args):
-    """Returns an approximate set of frustrated edges and a bicoloring.
+    """Return an approximate set of frustrated edges and a bicoloring.
 
     A signed social network graph is a graph whose signed edges
     represent friendly/hostile interactions between nodes. A
     signed social network is considered balanced if it can be cleanly
     divided into two factions, where all relations within a faction are
-    friendly, and all relations between factions are hostile. The measure
+    friendly and all relations between factions are hostile. The measure
     of imbalance or frustration is the minimum number of edges that
-    violate this rule.
+    violate this rule. [FIA]_
 
     Parameters
     ----------
     S : NetworkX graph
-        A social graph on which each edge has a 'sign'
+        A social graph on which each edge has a *sign*
         attribute with a numeric value.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrainted Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (:term:`QUBO`). A sampler is expected to have a *sample_qubo*
+        and *sample_ising* method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -60,7 +60,7 @@ def structural_imbalance(S, sampler=None, **sampler_args):
     Raises
     ------
     ValueError
-        If any edge does not have a 'sign' attribute.
+        If any edge does not have a *sign* attribute.
 
     Examples
     --------
@@ -89,16 +89,6 @@ def structural_imbalance(S, sampler=None, **sampler_args):
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    `Ising model on Wikipedia <https://en.wikipedia.org/wiki/Ising_model>`_
-
-    .. [FIA] Facchetti, G., Iacono G., and Altafini C. (2011). Computing
-       global structural balance in large-scale signed social networks.
-       PNAS, 108, no. 52, 20953-20958
-
     """
     h, J = structural_imbalance_ising(S)
 
@@ -126,27 +116,27 @@ def structural_imbalance(S, sampler=None, **sampler_args):
 
 
 def structural_imbalance_ising(S):
-    """Construct the Ising problem to calculate the structural imbalance of a signed social network.
+    """Construct the :term:`Ising` problem to calculate the structural imbalance of a signed social network.
 
     A signed social network graph is a graph whose signed edges
     represent friendly/hostile interactions between nodes. A
     signed social network is considered balanced if it can be cleanly
     divided into two factions, where all relations within a faction are
-    friendly, and all relations between factions are hostile. The measure
+    friendly and all relations between factions are hostile. The measure
     of imbalance or frustration is the minimum number of edges that
     violate this rule.
 
     Parameters
     ----------
     S : NetworkX graph
-        A social graph on which each edge has a 'sign' attribute with a numeric value.
+        A social graph on which each edge has a *sign* attribute with a numeric value.
 
     Returns
     -------
     h : dict
         The linear biases of the Ising problem. Each variable in the Ising problem represent
         a node in the signed social network. The solution that minimized the Ising problem
-        will assign each variable a value, either -1 or 1. This bi-coloring defines the factions.
+        will assign each variable a value; that is, either -1 or 1. This bi-coloring defines the factions.
 
     J : dict
         The quadratic biases of the Ising problem.
@@ -154,7 +144,7 @@ def structural_imbalance_ising(S):
     Raises
     ------
     ValueError
-        If any edge does not have a 'sign' attribute.
+        If any edge does not have a *sign* attribute.
 
     Examples
     --------

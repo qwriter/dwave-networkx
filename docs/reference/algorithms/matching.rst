@@ -10,7 +10,7 @@ A matching is a subset of graph edges in which no vertex occurs more than once.
    :align: center
    :scale: 40 %
 
-   A matching for a Chimera unit cell: no vertex is incident to more than one
+   A matching for a :term:`Chimera` unit cell: no vertex is incident to more than one
    edge in the set of blue edges
 
 .. automodule:: dwave_networkx.algorithms.matching
@@ -18,6 +18,7 @@ A matching is a subset of graph edges in which no vertex occurs more than once.
    :toctree: generated/
 
     matching_bqm
+    maximal_matching
     maximal_matching_bqm
     min_maximal_matching_bqm
     min_maximal_matching

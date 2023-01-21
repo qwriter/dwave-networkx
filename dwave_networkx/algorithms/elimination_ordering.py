@@ -37,24 +37,24 @@ __all__ = ['is_almost_simplicial',
 
 
 def is_simplicial(G, n):
-    """Determines whether a node n in G is simplicial.
+    """Determine whether a node ``n`` in ``G`` is simplicial.
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to check whether node n is simplicial.
+        The graph on which to check whether node ``n`` is simplicial.
     n : node
-        A node in graph G.
+        A node in graph ``G``.
 
     Returns
     -------
     is_simplicial : bool
-        True if its neighbors form a clique.
+        :code:`True`, if its neighbors form a clique.
 
     Examples
     --------
-    This example checks whether node 0 is simplicial for two graphs: G, a
-    single Chimera unit cell, which is bipartite, and K_5, the :math:`K_5`
+    This example checks whether node ``0`` is simplicial for two graphs: ``G``, a
+    single Chimera unit cell, which is bipartite, and ``K_5``, which is the :math:`K_5`
     complete graph.
 
     >>> G = dnx.chimera_graph(1, 1, 4)
@@ -69,23 +69,23 @@ def is_simplicial(G, n):
 
 
 def is_almost_simplicial(G, n):
-    """Determines whether a node n in G is almost simplicial.
+    """Determine whether a node n in ``G`` is almost simplicial.
 
     Parameters
     ----------
     G : NetworkX graph
         The graph on which to check whether node n is almost simplicial.
     n : node
-        A node in graph G.
+        A node in graph ``G``.
 
     Returns
     -------
     is_almost_simplicial : bool
-        True if all but one of its neighbors induce a clique.
+        :code:`True`, if all but one of its neighbors induces a clique.
 
     Examples
     --------
-    This example checks whether node 0 is simplicial or almost simplicial for
+    This example checks whether node ``0`` is simplicial or almost simplicial for
     a :math:`K_5` complete graph with one edge removed.
 
     >>> K_5 = nx.complete_graph(5)
@@ -103,7 +103,7 @@ def is_almost_simplicial(G, n):
 
 
 def minor_min_width(G):
-    """Computes a lower bound for the treewidth of graph G.
+    """Compute a lower bound for the treewidth of graph ``G``.
 
     Parameters
     ----------
@@ -170,7 +170,7 @@ def minor_min_width(G):
 
 
 def min_fill_heuristic(G):
-    """Computes an upper bound on the treewidth of graph G based on
+    """Compute an upper bound on the treewidth of graph ``G`` based on
     the min-fill heuristic for the elimination ordering.
 
     Parameters
@@ -181,7 +181,7 @@ def min_fill_heuristic(G):
     Returns
     -------
     treewidth_upper_bound : int
-        An upper bound on the treewidth of the graph G.
+        An upper bound on the treewidth of the graph ``G``.
 
     order : list
         An elimination order that induces the treewidth.
@@ -240,7 +240,7 @@ def _min_fill_needed_edges(adj, n):
 
 
 def min_width_heuristic(G):
-    """Computes an upper bound on the treewidth of graph G based on
+    """Compute an upper bound on the treewidth of graph ``G`` based on
     the min-width heuristic for the elimination ordering.
 
     Parameters
@@ -251,7 +251,7 @@ def min_width_heuristic(G):
     Returns
     -------
     treewidth_upper_bound : int
-        An upper bound on the treewidth of the graph G.
+        An upper bound on the treewidth of the graph ``G``.
 
     order : list
         An elimination order that induces the treewidth.
@@ -300,7 +300,7 @@ def min_width_heuristic(G):
 
 
 def max_cardinality_heuristic(G):
-    """Computes an upper bound on the treewidth of graph G based on
+    """Compute an upper bound on the treewidth of graph ``G`` based on
     the max-cardinality heuristic for the elimination ordering.
 
     Parameters
@@ -311,7 +311,7 @@ def max_cardinality_heuristic(G):
     Returns
     -------
     treewidth_upper_bound : int
-        An upper bound on the treewidth of the graph G.
+        An upper bound on the treewidth of the graph ``G``.
 
     order : list
         An elimination order that induces the treewidth.
@@ -370,18 +370,18 @@ def max_cardinality_heuristic(G):
 
 
 def _elim_adj(adj, n):
-    """Eliminates a variable, acting on the adj matrix of G,
-    returning set of edges that were added.
+    """Eliminate a variable that acts on the adj matrix of ``G``
+    and returns the set of edges that were added.
 
     Parameters
     ----------
     adj : dict
-        A dict of the form {v: neighbors, ...} where v are
-        vertices in a graph and neighbors is a set.
+        A dict of the form :code:`{v: neighbors, ...}` where ``v`` represents
+        vertices in a graph and neighbors represents a set.
 
     Returns
-    ----------
-    new_edges: set of edges that were added by eliminating v.
+    -------
+    new_edges: set of edges that were added by eliminating ``v``.
 
     """
     neighbors = adj[n]
@@ -399,7 +399,7 @@ def _elim_adj(adj, n):
 
 
 def elimination_order_width(G, order):
-    """Calculates the width of the tree decomposition induced by a
+    """Calculate the width of the tree decomposition induced by a
     variable elimination order.
 
     Parameters
@@ -408,13 +408,13 @@ def elimination_order_width(G, order):
         The graph on which to compute the width of the tree decomposition.
 
     order : list
-        The elimination order. Must be a list of all of the variables
-        in G.
+        The elimination order. Must be a list of all the variables
+        in ``G``.
 
     Returns
     -------
     treewidth : int
-        The width of the tree decomposition induced by order.
+        The width of the tree decomposition induced by the variable elimination order.
 
     Examples
     --------
@@ -460,9 +460,7 @@ def elimination_order_width(G, order):
 
 
 def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=None):
-    """Computes the treewidth of graph G and a corresponding perfect elimination ordering.
-
-    Algorithm based on [GD]_.
+    """Compute the treewidth of graph ``G`` and a corresponding perfect elimination ordering.
 
     Parameters
     ----------
@@ -476,7 +474,7 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
 
     treewidth_upperbound : int (optional, Default None)
         An upper bound on the treewidth. Note that using
-        this parameter can result in no returned order.
+        this parameter can result in no order being returned.
 
     Returns
     -------
@@ -489,7 +487,7 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
     --------
     This example computes the treewidth for the :math:`K_7`
     complete graph using an optionally provided elimination order (a sequential
-    ordering of the nodes, arbitrally chosen).
+    ordering of the nodes that is arbitrally chosen).
 
     >>> K_7 = nx.complete_graph(7)
     >>> dnx.treewidth_branch_and_bound(K_7, [0, 1, 2, 3, 4, 5, 6])
@@ -552,7 +550,7 @@ def _branch_and_bound(adj, x, g, f, best_found, skipable=set(), theorem6p2=None)
     f: lower bound on width of any elimination order starting with x
     best_found = ub,order: best upper bound on the treewidth found so far, and its elimination order
     skipable: vertices that can be skipped according to Lemma 5.3
-    theorem6p2: terms that have been explored/can be pruned according to Theorem 6.2
+    theorem6p2: terms that have been explored or can be pruned according to Theorem 6.2
     """
 
     # theorem6p2 checks for branches that can be pruned using Theorem 6.2
@@ -694,7 +692,7 @@ def _graph_reduction(adj, x, g, f):
 
 
 def _theorem5p4(adj, ub):
-    """By Theorem 5.4, if any two vertices have ub + 1 common neighbors
+    """By Theorem 5.4, if any two vertices have ub + 1 common neighbors,
     then we can add an edge between them.
     """
     new_edges = set()
@@ -742,7 +740,7 @@ def _theorem6p1():
 
 def _theorem6p2():
     """See Theorem 6.2 in paper.
-    Prunes (x,...,a) when (x,a) is explored and a has the same neighbour set in both graphs.
+    Prune (x,...,a) when (x,a) is explored and a has the same neighbour set in both graphs.
     """
     pruning_set2 = set()
 
@@ -767,7 +765,7 @@ def _theorem6p2():
 
 def _theorem6p3():
     """See Theorem 6.3 in paper.
-    Prunes (s,b) when (s,a) is explored, b (almost) simplicial in (s,a), and a (almost) simplicial in (s,b)
+    Prune (s,b) when (s,a) is explored, b (almost) simplicial in (s,a), and a (almost) simplicial in (s,b).
     """
     pruning_set3 = set()
 
@@ -792,7 +790,7 @@ def _theorem6p4():
     Prunes (s,b) when (s,a) is explored and E(a) is a subset of E(b).
     For this theorem we only record E(a) rather than (s,E(a))
     because we only need to check for pruning in the same s context
-    (i.e the same level of recursion).
+    (i.e., the same level of recursion).
     """
     pruning_set4 = list()
 
@@ -809,9 +807,9 @@ def _theorem6p4():
 
 
 def chimera_elimination_order(m, n=None, t=4, coordinates=False):
-    """Provides a variable elimination order for a Chimera graph.
+    """Provide a variable elimination order for a :term:`Chimera` graph.
 
-    A graph defined by ``chimera_graph(m,n,t)`` has treewidth :math:`max(m,n)*t`.
+    A graph defined by :func:`.chimera_graph()` has treewidth :math:`max(m,n)*t`.
     This function outputs a variable elimination order inducing a tree
     decomposition of that width.
 
@@ -824,13 +822,13 @@ def chimera_elimination_order(m, n=None, t=4, coordinates=False):
     t : int (optional, default 4)
         Size of the shore within each Chimera tile.
     coordinates bool (optional, default False):
-        If True, the elimination order is given in terms of 4-term Chimera
-        coordinates, otherwise given in linear indices.
+        If :code:`True`, the elimination order is given in terms of 4-term Chimera
+        coordinates; otherwise, given in linear indices.
         
     Returns
     -------
     order : list
-        An elimination order that induces the treewidth of chimera_graph(m,n,t).
+        An elimination order that induces the treewidth of :func:`.chimera_graph()`.
 
     Examples
     --------
@@ -870,15 +868,15 @@ def chimera_elimination_order(m, n=None, t=4, coordinates=False):
 
 
 def pegasus_elimination_order(n, coordinates=False):
-    """Provides a variable elimination order for the Pegasus graph.
+    """Provide a variable elimination order for the :term:`Pegasus` graph.
 
-    The treewidth of a Pegasus graph ``pegasus_graph(n)`` is lower-bounded by 
-    :math:`12n-11` and upper bounded by :math:`12n-4` [BBRR]_ .
+    The treewidth of a Pegasus graph :func:`.pegasus_graph()` is lower-bounded by
+    :math:`12n-11` and upper bounded by :math:`12n-4` [BBRR]_.
 
-    Simple pegasus variable elimination order rules:
+    Simple Pegasus variable elimination order rules are as follows:
 
-       - eliminate vertical qubits, one column at a time
-       - eliminate horizontal qubits in each column once their adjacent vertical
+       - Eliminate vertical qubits, one column at a time
+       - Eliminate horizontal qubits in each column once their adjacent vertical
          qubits have been eliminated
 
     Args
@@ -887,8 +885,8 @@ def pegasus_elimination_order(n, coordinates=False):
         The size parameter for the Pegasus lattice.
 
     coordinates : bool, optional (default False)
-        If True, the elimination order is given in terms of 4-term Pegasus
-        coordinates, otherwise given in linear indices.
+        If :code:`True`, the elimination order is given in terms of 4-term Pegasus
+        coordinates; otherwise, given in linear indices.
 
     Returns
     -------
@@ -922,14 +920,14 @@ def pegasus_elimination_order(n, coordinates=False):
 
     
 def zephyr_elimination_order(m, t=4, coordinates=False):
-    """Provides a variable elimination order for the zephyr graph.
+    """Provide a variable elimination order for the :term:`Zephyr` graph.
 
-    The treewidth of a Zephyr graph ``zephyr_graph(m,t)`` is upper-bounded by 
-    :math:`4tm+2t` and lower-bounded by :math:`4tm` [BRK]_ .
+    The treewidth of a Zephyr graph :func:`.zephyr_graph()` is upper-bounded by
+    :math:`4tm+2t` and lower-bounded by :math:`4tm` [BRK]_.
     
-    Simple zephyr variable elimination rules:
-       - eliminate vertical qubits, one column at a time
-       - eliminate horizontal qubits in each column from top to bottom
+    Simple Zephyr variable elimination rules are as follows:
+       - Eliminate vertical qubits, one column at a time
+       - Eliminate horizontal qubits in each column from top to bottom
 
     Args
     ----
@@ -938,8 +936,8 @@ def zephyr_elimination_order(m, t=4, coordinates=False):
     t : int
         Tile parameter for the Zephyr lattice.
     coordinates : bool, optional (default False)
-        If True, the elimination order is given in terms of 4-term Zephyr
-        coordinates, otherwise given in linear indices.
+        If :code:`True`, the elimination order is given in terms of 4-term Zephyr
+        coordinates; otherwise, given in linear indices.
 
     Returns
     -------

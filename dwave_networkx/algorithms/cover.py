@@ -22,10 +22,9 @@ __all__ = ['min_weighted_vertex_cover', 'min_vertex_cover', 'is_vertex_cover']
 def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **sampler_args):
     """Return an approximate minimum weighted vertex cover.
 
-    Defines a `QUBO <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_
-    with ground states corresponding to a minimum weighted
+    Defines a :term:`QUBO` with ground states corresponding to a minimum weighted
     `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
-    and uses the sampler to sample from it.
+    and uses the :term:`sampler` to sample from it.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set. A minimum weighted
@@ -37,19 +36,19 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
         The graph on which to find a minimum weighted vertex cover.
 
     weight : string, optional (default None)
-        If None, every node has equal weight. If a string, use this node
+        If :code:`None`, every node has equal weight. If a ``string``, use this node
         attribute as the node weight. A node without this attribute is
-        assumed to have max weight.
+        assumed to have maximum weight.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints versus objective.
@@ -80,9 +79,9 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
 def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
     """Return an approximate minimum vertex cover.
 
-    Defines a QUBO with ground states corresponding to a minimum
+    Defines a :term:`QUBO` with ground states corresponding to a minimum
     `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
-    and uses the sampler to sample from it.
+    and uses the :term:`sampler` to sample from it.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set. A minimum vertex cover
@@ -95,14 +94,13 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
-        equation or a
-        `Quadratic Unconstrained Binary Optimization Problem (QUBO) <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_.
-        A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        samples from low energy states in models defined by an :term:`Ising`
+        equation or a QUBO.
+        A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints versus objective.
@@ -120,7 +118,7 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
     --------
     This example uses a sampler from
     `dimod <https://github.com/dwavesystems/dimod>`_ to find a minimum vertex
-    cover for a Chimera unit cell. Both the horizontal (vertices 0,1,2,3) and
+    cover for a :term:`Chimera` unit cell. Both the horizontal (vertices 0,1,2,3) and
     vertical (vertices 4,5,6,7) tiles connect to all 16 edges, so repeated
     executions can return either set.
 
@@ -148,7 +146,7 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
 
 
 def is_vertex_cover(G, vertex_cover):
-    """Determine whether the given set of vertices is a vertex cover of graph G.
+    """Determine whether the given set of vertices is a vertex cover of graph ``G``.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set.
@@ -164,11 +162,11 @@ def is_vertex_cover(G, vertex_cover):
     Returns
     -------
     is_cover : bool
-        True if the given iterable forms a vertex cover.
+        :code:`True`, if the given iterable forms a vertex cover.
 
     Examples
     --------
-    This example checks two covers for a graph, G, of a single Chimera
+    This example checks two covers for a graph, ``G``, of a single :term:`Chimera`
     unit cell. The first uses the set of the four horizontal qubits, which
     do constitute a cover; the second set removes one node.
 

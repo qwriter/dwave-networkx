@@ -23,17 +23,17 @@ __all__ = ["maximum_clique", "clique_number", "is_clique"]
 def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
     """
     Return an approximate maximum clique.
-    A clique in an undirected graph, G = (V, E), is a subset of the vertex set
-    :math:`C \subseteq V` such that for every two vertices in C, there exists an edge
+    A clique in an undirected graph, :math:`G=(V,E)`, is a subset of the vertex set
+    :math:`C \subseteq V` such that for every two vertices in :math:`C`, there exists an edge
     connecting the two. This is equivalent to saying that the subgraph
-    induced by C is complete (in some cases, the term clique may also refer
+    induced by :math:`C` is complete (in some cases, the term clique may also refer
     to the subgraph). A maximum clique is a clique of the largest
     possible size in a given graph.
 
     This function works by finding the maximum independent set of the complement
-    graph of the given graph G which is equivalent to finding a maximum clique.
-    It defines a QUBO with ground states corresponding
-    to a maximum weighted independent set and uses the sampler to sample from it.
+    graph of the given graph ``G`` which is equivalent to finding a maximum clique.
+    It defines a :term:`QUBO` with ground states corresponding
+    to a maximum weighted independent set and uses the :term:`sampler` to sample from it.
 
     Parameters
     ----------
@@ -42,13 +42,13 @@ def maximum_clique(G, sampler=None, lagrange=2.0, **sampler_args):
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints (no edges within set)
@@ -95,13 +95,13 @@ def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
     Return the number of vertices in the maximum clique of a graph.
     A maximum clique is a clique of the largest possible size in a given graph.
     The clique number math:`\omega(G)` of a graph G is the number of
-    vertices in a maximum clique in G. The intersection number of
-    G is the smallest number of cliques that together cover all edges of G.
+    vertices in a maximum clique in ``G``. The intersection number of
+    ``G`` is the smallest number of cliques that together cover all edges of ``G``.
 
     This function works by finding the maximum independent set of the complement
-    graph of the given graph G which is equivalent to finding a maximum clique.
-    It defines a QUBO with ground states corresponding
-    to a maximum weighted independent set and uses the sampler to sample from it.
+    graph of the given graph ``G`` which is equivalent to finding a maximum clique.
+    It defines a :term:`QUBO` with ground states corresponding
+    to a maximum weighted independent set and uses the :term:`sampler` to sample from it.
 
     Parameters
     ----------
@@ -110,13 +110,13 @@ def clique_number(G, sampler=None, lagrange=2.0, **sampler_args):
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints (no edges within set)
@@ -162,7 +162,7 @@ def is_clique(G, clique_nodes):
     Returns
     -------
     is_clique : bool
-        True if clique_nodes forms a clique.
+        :code:`True`, if code:`clique_nodes` forms a clique.
 
     Example
     -------

@@ -23,14 +23,14 @@ __all__ = ["partition",
 
 
 def partition(G, num_partitions=2, sampler=None, **sampler_args):
-    """Returns an approximate k-partition of G.
+    """Return an approximate k-partition of ``G``.
     
-    Defines an CQM with ground states corresponding to a
-    balanced k-partition of G and uses the sampler to sample from it.
+    Defines an :term:`CQM` with ground states corresponding to a
+    balanced k-partition of ``G`` and uses the :term:`sampler` to sample from it.
     A k-partition is a collection of k subsets of the vertices
-    of G such that each vertex is in exactly one subset, and
+    of ``G`` such that each vertex is in exactly one subset, and
     the number of edges between vertices in different subsets
-    is as small as possible. If G is a weighted graph, the sum
+    is as small as possible. If ``G`` is a weighted graph, the sum
     of weights over those edges are minimized.
     
     Parameters
@@ -41,9 +41,9 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
         The number of subsets in the desired partition.
     sampler : 
         A constrained quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Model, with or without constraints. The sampler 
-        is expected to have a 'sample_cqm' method. A sampler is expected to
+        is expected to have a *sample_cqm* method. A sampler is expected to
         return an iterable of samples, in order of increasing energy.
     sampler_args
         Additional keyword parameters are passed to the sampler.
@@ -52,13 +52,13 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
     -------
     node_partition : dict
         The partition as a dictionary mapping each node to subsets labelled
-        as integers 0, 1, 2, ... num_partitions.
+        as integers: 0, 1, 2, ... ``num_partitions``.
     
     Example
     -------
     This example uses a sampler from
     `dimod <https://github.com/dwavesystems/dimod>`_ to find a 2-partition
-    for a graph of a Chimera unit cell created using the `chimera_graph()`
+    for a graph of a :term:`Chimera` unit cell created using the :func:`.chimera_graph`
     function.
     
     >>> import dimod
@@ -96,12 +96,12 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
 def graph_partition_cqm(G, num_partitions):
     """Find a constrained quadratic model for the graph's partitions.
 
-    Defines an CQM with ground states corresponding to a
-    balanced k-partition of G and uses the sampler to sample from it.
+    Defines an :term:`CQM` with ground states corresponding to a
+    balanced k-partition of ``G`` and uses the :term:`sampler` to sample from it.
     A k-partition is a collection of k subsets of the vertices
-    of G such that each vertex is in exactly one subset, and
+    of ``G`` such that each vertex is in exactly one subset, and
     the number of edges between vertices in different subsets
-    is as small as possible. If G is a weighted graph, the sum
+    is as small as possible. If ``G`` is a weighted graph, the sum
     of weights over those edges are minimized.
     
     Parameters
@@ -115,7 +115,7 @@ def graph_partition_cqm(G, num_partitions):
     -------
     cqm : :class:`dimod.ConstrainedQuadraticModel`
         A constrained quadratic model with ground states corresponding to a
-        partition problem. The nodes of `G` are discrete logical variables
+        partition problem. The nodes of ``G`` are discrete logical variables
         of the CQM, where the cases are the different partitions the node
         can be assigned to. The objective is given as the number of edges
         connecting nodes in different partitions.

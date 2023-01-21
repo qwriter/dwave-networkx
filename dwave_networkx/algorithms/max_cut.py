@@ -20,13 +20,13 @@ __all__ = ["maximum_cut", "weighted_maximum_cut"]
 
 @binary_quadratic_model_sampler(1)
 def maximum_cut(G, sampler=None, **sampler_args):
-    """Returns an approximate maximum cut.
+    """Return an approximate maximum cut.
 
-    Defines an Ising problem with ground states corresponding to
-    a maximum cut and uses the sampler to sample from it.
+    Defines an :term:`Ising` problem with ground states corresponding to
+    a maximum cut and uses the :term:`sampler` to sample from it.
 
-    A maximum cut is a subset S of the vertices of G such that
-    the number of edges between S and the complementary subset
+    A maximum cut is a subset ``S`` of the vertices of ``G`` such that
+    the number of edges between ``S`` and the complementary subset
     is as large as possible.
 
     Parameters
@@ -38,11 +38,13 @@ def maximum_cut(G, sampler=None, **sampler_args):
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
-        iterable of samples, in order of increasing energy. If no
-        sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        Problem (:term:`QUBO`). A sampler is expected to have
+        :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` methods.
+        A sampler is expected to return an iterable of samples,
+        in order of increasing energy. If no sampler is provided,
+        one must be provided using the
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
         Additional keyword parameters are passed to the sampler.
@@ -50,13 +52,13 @@ def maximum_cut(G, sampler=None, **sampler_args):
     Returns
     -------
     S : set
-        A maximum cut of G.
+        A maximum cut of ``G``.
 
     Example
     -------
     This example uses a sampler from
     `dimod <https://github.com/dwavesystems/dimod>`_ to find a maximum cut
-    for a graph of a Chimera unit cell created using the `chimera_graph()`
+    for a graph of a :term:`Chimera` unit cell created using the :func:`.chimera_graph`
     function.
 
     >>> import dimod
@@ -87,38 +89,38 @@ def maximum_cut(G, sampler=None, **sampler_args):
 
 @binary_quadratic_model_sampler(1)
 def weighted_maximum_cut(G, sampler=None, **sampler_args):
-    """Returns an approximate weighted maximum cut.
+    """Return an approximate weighted maximum cut.
 
-    Defines an Ising problem with ground states corresponding to
-    a weighted maximum cut and uses the sampler to sample from it.
+    Defines an :term:`Ising` problem with ground states corresponding to
+    a weighted maximum cut and uses the :term:`sampler` to sample from it.
 
-    A weighted maximum cut is a subset S of the vertices of G that
-    maximizes the sum of the edge weights between S and its
+    A weighted maximum cut is a subset ``S`` of the vertices of ``G`` that
+    maximizes the sum of the edge weights between ``S`` and its
     complementary subset.
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a weighted maximum cut. Each edge in G should
+        The graph on which to find a weighted maximum cut. Each edge in ``G`` should
         have a numeric `weight` attribute.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (:erm:`QUBO`). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
     S : set
-        A maximum cut of G.
+        A maximum cut of ``G``.
 
     Notes
     -----

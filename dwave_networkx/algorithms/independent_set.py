@@ -23,14 +23,14 @@ __all__ = ["maximum_weighted_independent_set",
 
 @binary_quadratic_model_sampler(2)
 def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0, **sampler_args):
-    """Returns an approximate maximum weighted independent set.
+    """Return an approximate maximum weighted independent set.
 
-    Defines a QUBO with ground states corresponding to a
-    maximum weighted independent set and uses the sampler to sample
+    Defines a :term:`QUBO` with ground states corresponding to a
+    maximum weighted independent set and uses the :term:`sampler` to sample
     from it.
 
     An independent set is a set of nodes such that the subgraph
-    of G induced by these nodes contains no edges. A maximum
+    of ``G`` induced by these nodes contains no edges. A maximum
     independent set is an independent set of maximum total node weight.
 
     Parameters
@@ -39,26 +39,26 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
         The graph on which to find a maximum cut weighted independent set.
 
     weight : string, optional (default None)
-        If None, every node has equal weight. If a string, use this node
+        If None, every node has equal weight. If a ``string``, use this node
         attribute as the node weight. A node without this attribute is
-        assumed to have max weight.
+        assumed to have maximum weight.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
-        samples from low energy states in models defined by an Ising
+        samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
         
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints (no edges within set) 
         versus objective (largest set possible).
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -77,10 +77,7 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
 
     `Independent Set on Wikipedia <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
 
-    `QUBO on Wikipedia <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_
-
-    .. [AL] Lucas, A. (2014). Ising formulations of many NP problems.
-       Frontiers in Physics, Volume 2, Article 5.
+    Lucas. 2014. [AL]_
 
     """
     # Get a QUBO representation of the problem
@@ -98,15 +95,15 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
 
 @binary_quadratic_model_sampler(1)
 def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
-    """Returns an approximate maximum independent set.
+    """Return an approximate maximum independent set.
 
-    Defines a QUBO with ground states corresponding to a
-    maximum independent set and uses the sampler to sample from
+    Defines a :term:`QUBO` with ground states corresponding to a
+    maximum independent set and uses the :term:`sampler` to sample from
     it.
 
     An independent set is a set of nodes such that the subgraph
-    of G induced by these nodes contains no edges. A maximum
-    independent set is an independent set of largest possible size.
+    of ``G`` induced by these nodes contains no edges. A maximum
+    independent set is an independent set of the largest possible size.
 
     Parameters
     ----------
@@ -117,18 +114,18 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a 'sample_qubo'
-        and 'sample_ising' method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
+        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
         
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints (no edges within set) 
         versus objective (largest set possible).
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -141,7 +138,7 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
     This example uses a sampler from
     `dimod <https://github.com/dwavesystems/dimod>`_ to find a maximum
     independent set for a graph of a Chimera unit cell created using the
-    `chimera_graph()` function.
+    :func:`~chimera_graph()` function.
 
     >>> import dimod
     >>> sampler = dimod.SimulatedAnnealingSampler()
@@ -159,20 +156,17 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
 
     `Independent Set on Wikipedia <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
 
-    `QUBO on Wikipedia <https://en.wikipedia.org/wiki/Quadratic_unconstrained_binary_optimization>`_
-
-    .. [AL] Lucas, A. (2014). Ising formulations of many NP problems.
-       Frontiers in Physics, Volume 2, Article 5.
+    Lucas. 2014. [AL]_
 
     """
     return maximum_weighted_independent_set(G, None, sampler, lagrange, **sampler_args)
 
 
 def is_independent_set(G, indep_nodes):
-    """Determines whether the given nodes form an independent set.
+    """Determine whether the given nodes form an independent set.
 
     An independent set is a set of nodes such that the subgraph
-    of G induced by these nodes contains no edges.
+    of ``G`` induced by these nodes contains no edges.
 
     Parameters
     ----------
@@ -181,17 +175,17 @@ def is_independent_set(G, indep_nodes):
 
     indep_nodes : list
        List of nodes that form a maximum independent set, as
-       determined by the given sampler.
+       determined by the given :term:`sampler`.
 
     Returns
     -------
     is_independent : bool
-        True if indep_nodes form an independent set.
+        :code:`True`, if ``indep_nodes`` form an independent set.
 
     Example
     -------
     This example checks two sets of nodes, both derived from a
-    single Chimera unit cell, for an independent set. The first set is
+    single :term:`Chimera` unit cell, for an independent set. The first set is
     the horizontal tile's nodes; the second has nodes from the horizontal and
     verical tiles.
 
@@ -207,16 +201,16 @@ def is_independent_set(G, indep_nodes):
 
 
 def maximum_weighted_independent_set_qubo(G, weight=None, lagrange=2.0):
-    """Return the QUBO with ground states corresponding to a maximum weighted independent set.
+    """Return the :term:`QUBO` with ground states corresponding to a maximum weighted independent set.
 
     Parameters
     ----------
     G : NetworkX graph
 
     weight : string, optional (default None)
-        If None, every node has equal weight. If a string, use this node
+        If None, every node has equal weight. If a ``string``, use this node
         attribute as the node weight. A node without this attribute is
-        assumed to have max weight.
+        assumed to have maximum weight.
         
     lagrange : optional (default 2)
         Lagrange parameter to weight constraints (no edges within set) 

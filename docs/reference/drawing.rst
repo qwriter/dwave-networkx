@@ -25,9 +25,10 @@ Chimera Graph Functions
 Example
 ~~~~~~~
 
-This example uses the :func:`.chimera_layout()` function to show the positions
-of nodes of a simple 5-node NetworkX graph in a Chimera lattice. It then uses the
-:func:`.chimera_graph()` and :func:`.draw_chimera()` functions to display those
+In this example, the :func:`.chimera_layout()` function shows the positions
+of the nodes of a simple 5-node NetworkX graph on a :term:`Chimera` lattice.
+Then, the
+:func:`.chimera_graph()` and :func:`.draw_chimera()` functions display those
 positions on a Chimera unit cell.
 
 .. code-block:: python
@@ -77,8 +78,8 @@ Pegasus Graph Functions
 Example
 ~~~~~~~
 
-This example uses the :func:`.draw_pegasus()` function to show the positions
-of nodes of a simple 5-node graph on a small Pegasus lattice.
+In this example, the :func:`.draw_pegasus()` function shows the positions
+of the nodes of a simple 5-node graph on a small :term:`Pegasus` lattice.
 
 .. code-block:: python
 
@@ -119,8 +120,8 @@ Zephyr Graph Functions
 Example
 ~~~~~~~
 
-This example uses the :func:`.draw_zephyr_embedding` function to show the positions
-of a five-node clique on a small Zephyr graph.
+In this example, the :func:`.draw_zephyr_embedding` function shows the positions
+of the nodes of a five-node clique on a small :term:`Zephyr` graph.
 
 .. code-block:: python
 

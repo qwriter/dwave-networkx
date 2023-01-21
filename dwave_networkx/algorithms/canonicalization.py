@@ -20,7 +20,7 @@ __all__ = ['canonical_chimera_labeling']
 
 
 def canonical_chimera_labeling(G, t=None):
-    """Return a mapping from the labels of G to chimera-indexed labeling.
+    """Return a mapping from the labels of ``G`` to :term:`Chimera`-indexed labeling.
 
     Parameters
     ----------
