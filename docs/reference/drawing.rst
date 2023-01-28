@@ -20,7 +20,10 @@ Chimera Graph Functions
    :toctree: generated/
 
    chimera_layout
+   chimera_node_placer_2d
    draw_chimera
+   draw_chimera_embedding
+   draw_chimera_yield
 
 Example
 ~~~~~~~

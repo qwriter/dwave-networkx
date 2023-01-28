@@ -29,10 +29,10 @@ __all__ = ["traveling_salesperson",
 @binary_quadratic_model_sampler(1)
 def traveling_salesperson(G, sampler=None, lagrange=None, weight='weight',
                           start=None, **sampler_args):
-    """Returns an approximate minimum traveling salesperson route.
+    """Return an approximate minimum traveling salesperson route.
 
-    Defines a QUBO with ground states corresponding to the
-    minimum routes and uses the sampler to sample
+    Defines a :term:`QUBO` with ground states corresponding to the
+    minimum routes and uses the :term:`sampler` to sample
     from it.
 
     A route is a cycle in the graph that reaches each node exactly once.
@@ -52,7 +52,7 @@ def traveling_salesperson(G, sampler=None, lagrange=None, weight='weight',
         and 'sample_ising' method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
-        `set_default_sampler` function.
+        :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     lagrange : number, optional (default None)
         Lagrange parameter to weight constraints (visit every city once)
@@ -62,15 +62,15 @@ def traveling_salesperson(G, sampler=None, lagrange=None, weight='weight',
         The name of the edge attribute containing the weight.
 
     start : node, optional
-        If provided, the route will begin at `start`.
+        If provided, the node at which the route begins.
 
     sampler_args :
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
     route : list
-       List of nodes in order to be visited on a route
+       List of nodes in the order that they are to be visited on a route.
 
     Examples
     --------
@@ -115,9 +115,9 @@ traveling_salesman = traveling_salesperson
 
 
 def traveling_salesperson_qubo(G, lagrange=None, weight='weight', missing_edge_weight=None):
-    """Return the QUBO with ground states corresponding to a minimum TSP route.
+    """Return the :term`QUBO` with ground states corresponding to a minimum TSP route.
 
-    If :math:`|G|` is the number of nodes in the graph, the resulting qubo will have:
+    If :math:`|G|` is the number of nodes in the graph, the resulting QUBO will have:
 
     * :math:`|G|^2` variables/nodes
     * :math:`2 |G|^2 (|G| - 1)` interactions/edges
@@ -135,17 +135,17 @@ def traveling_salesperson_qubo(G, lagrange=None, weight='weight', missing_edge_w
         The name of the edge attribute containing the weight.
     
     missing_edge_weight : number, optional (default None)
-        For bi-directional graphs, the weight given to missing edges.
-        If None is given (the default), missing edges will be set to
+        For bidirectional graphs, the weight given to missing edges.
+        If not specified, the weight given to missing edges will be set to
         the sum of all weights.
 
     Returns
     -------
     QUBO : dict
-       The QUBO with ground states corresponding to a minimum travelling
-       salesperson route. The QUBO variables are labelled `(c, t)` where `c`
-       is a node in `G` and `t` is the time index. For instance, if `('a', 0)`
-       is 1 in the ground state, that means the node 'a' is visted first.
+       QUBO with ground states corresponding to a minimum travelling
+       salesperson route. The QUBO variables are labelled ``(c, t)`` where ``c``
+       is a node in ``G`` and ``t`` is the time index. For instance, if ``('a', 0)``
+       is 1 in the ground state, that means the node ``'a'`` is visited first.
 
     """
     N = G.number_of_nodes()
@@ -217,7 +217,7 @@ traveling_salesman_qubo = traveling_salesperson_qubo
 
 
 def is_hamiltonian_path(G, route):
-    """Determines whether the given list forms a valid TSP route.
+    """Determine whether the given list forms a valid TSP route.
 
     A travelling salesperson route must visit each city exactly once.
 
@@ -225,7 +225,7 @@ def is_hamiltonian_path(G, route):
     ----------
     G : NetworkX graph
 
-        The graph on which to check the route.
+        The graph on which to check the ``route``.
 
     route : list
 
@@ -234,7 +234,7 @@ def is_hamiltonian_path(G, route):
     Returns
     -------
     is_valid : bool
-        True if route forms a valid travelling salesperson route.
+        :code:`True`, if ``route`` forms a valid travelling salesperson route.
 
     """
 
