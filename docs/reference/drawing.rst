@@ -4,7 +4,7 @@
 Drawing
 *******
 
-Tools to visualize topologies of D-Wave QPUs and weighted graph problems on them.
+Tools to visualize topologies of D-Wave QPUs and weighted :term:`graph` problems on them.
 
 .. currentmodule:: dwave_networkx
 
@@ -75,6 +75,7 @@ Pegasus Graph Functions
 
    draw_pegasus
 	 draw_pegasus_embedding
+     draw_pegasus_yield
 	 pegasus_layout
 	 pegasus_node_placer_2d
 

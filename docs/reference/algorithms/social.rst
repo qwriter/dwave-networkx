@@ -2,8 +2,8 @@
 Social
 ******
 
-A signed social-network graph is a graph whose signed edges represent
-friendly/hostile interactions between vertices.
+A signed social-network :term:`graph` is a graph whose signed edges represent
+friendly or hostile interactions between vertices.
 
 .. figure:: ../../_images/Social.png
    :name: Social

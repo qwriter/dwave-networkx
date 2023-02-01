@@ -30,7 +30,7 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
     A k-partition is a collection of k subsets of the vertices
     of ``G`` such that each vertex is in exactly one subset, and
     the number of edges between vertices in different subsets
-    is as small as possible. If ``G`` is a weighted graph, the sum
+    is as small as possible. If ``G`` is a weighted :term:`graph`, the sum
     of weights over those edges are minimized.
     
     Parameters
@@ -43,10 +43,10 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
         A constrained quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Model, with or without constraints. The sampler 
-        is expected to have a *sample_cqm* method. A sampler is expected to
+        is expected to have a ``sample_cqm`` method. A sampler is expected to
         return an iterable of samples, in order of increasing energy.
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
     
     Returns
     -------
@@ -94,7 +94,7 @@ def partition(G, num_partitions=2, sampler=None, **sampler_args):
     
     
 def graph_partition_cqm(G, num_partitions):
-    """Find a constrained quadratic model for the graph's partitions.
+    """Find a constrained quadratic model for the :term:`graph`'s partitions.
 
     Defines an :term:`CQM` with ground states corresponding to a
     balanced k-partition of ``G`` and uses the :term:`sampler` to sample from it.

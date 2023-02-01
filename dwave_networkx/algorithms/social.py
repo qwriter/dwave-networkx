@@ -21,7 +21,7 @@ __all__ = ["structural_imbalance"]
 def structural_imbalance(S, sampler=None, **sampler_args):
     """Return an approximate set of frustrated edges and a bicoloring.
 
-    A signed social network graph is a graph whose signed edges
+    A signed social network :term:`graph` is a graph whose signed edges
     represent friendly/hostile interactions between nodes. A
     signed social network is considered balanced if it can be cleanly
     divided into two factions, where all relations within a faction are
@@ -32,15 +32,15 @@ def structural_imbalance(S, sampler=None, **sampler_args):
     Parameters
     ----------
     S : NetworkX graph
-        A social graph on which each edge has a *sign*
+        A social graph on which each edge has a ``sign``
         attribute with a numeric value.
 
     sampler
-        A binary quadratic model sampler. A sampler is a process that
+        A binary quadratic model (:term:`BQM`) :term:`sampler`. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrainted Binary Optimization
-        Problem (:term:`QUBO`). A sampler is expected to have a *sample_qubo*
-        and *sample_ising* method. A sampler is expected to return an
+        Problem (:term:`QUBO`). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
@@ -52,7 +52,7 @@ def structural_imbalance(S, sampler=None, **sampler_args):
     -------
     frustrated_edges : dict
         A dictionary of the edges that violate the edge sign. The imbalance
-        of the network is the length of frustrated_edges.
+        of the network is the length of ``frustrated_edges``.
 
     colors: dict
         A bicoloring of the nodes into two factions.
@@ -60,7 +60,7 @@ def structural_imbalance(S, sampler=None, **sampler_args):
     Raises
     ------
     ValueError
-        If any edge does not have a *sign* attribute.
+        If any edge does not have a ``sign`` attribute.
 
     Examples
     --------
@@ -118,8 +118,8 @@ def structural_imbalance(S, sampler=None, **sampler_args):
 def structural_imbalance_ising(S):
     """Construct the :term:`Ising` problem to calculate the structural imbalance of a signed social network.
 
-    A signed social network graph is a graph whose signed edges
-    represent friendly/hostile interactions between nodes. A
+    A signed social network :term:`graph` is a graph whose signed edges
+    represent friendly or hostile interactions between nodes. A
     signed social network is considered balanced if it can be cleanly
     divided into two factions, where all relations within a faction are
     friendly and all relations between factions are hostile. The measure
@@ -129,7 +129,7 @@ def structural_imbalance_ising(S):
     Parameters
     ----------
     S : NetworkX graph
-        A social graph on which each edge has a *sign* attribute with a numeric value.
+        A social graph on which each edge has a ``sign`` attribute with a numeric value.
 
     Returns
     -------
@@ -144,7 +144,7 @@ def structural_imbalance_ising(S):
     Raises
     ------
     ValueError
-        If any edge does not have a *sign* attribute.
+        If any edge does not have a ``sign`` attribute.
 
     Examples
     --------

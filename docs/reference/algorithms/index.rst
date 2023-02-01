@@ -4,8 +4,8 @@
 Algorithms
 **********
 
-Implementations of graph-theory algorithms on the D-Wave system and other
-binary quadratic model :term:`sampler`s.
+Implementations of :term:`graph`-theory algorithms on the D-Wave system and other
+:term:`binary quadratic model` (BQM) :term:`sampler`s.
 
 .. currentmodule:: dwave_networkx
 

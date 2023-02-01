@@ -28,15 +28,15 @@ __all__ = ['chimera_layout', 'draw_chimera', 'draw_chimera_embedding', 'draw_chi
 
 
 def chimera_layout(G, scale=1., center=None, dim=2):
-    """Position the nodes of graph ``G`` in a :term:`Chimera` cross topology.
+    """Position the nodes of :term:`graph` ``G`` in a :term:`Chimera` cross topology.
 
     NumPy (https://scipy.org) is required for this function.
 
     Parameters
     ----------
     G : NetworkX graph
-        Chimera graph or a subgraph of a Chimera graph.
-        If every node in ``G`` has a `chimera_index` attribute,
+        Chimera graph or a :term:`subgraph` of a Chimera graph.
+        If every node in ``G`` has a ``chimera_index`` attribute,
         those are used to place the nodes. Otherwise,
         a best-effort attempt is made to find positions.
 
@@ -121,14 +121,14 @@ def chimera_node_placer_2d(m, n, t, scale=1., center=None, dim=2):
         Size of the shore within each Chimera tile.
 
     scale : float (default 1)
-        Scale factor. When scale = 1,  all positions fit within [0, 1]
+        Scale factor. When ``scale`` = 1,  all positions fit within [0, 1]
         on the x-axis and [-1, 0] on the y-axis.
 
     center : None or array (default None)
         Coordinates of the top left corner.
 
     dim : int (default 2)
-        Number of dimensions. When dim > 2, all extra dimensions are
+        Number of dimensions. When ``dim`` > 2, all extra dimensions are
         set to 0.
 
     Returns
@@ -136,7 +136,7 @@ def chimera_node_placer_2d(m, n, t, scale=1., center=None, dim=2):
     xy_coords : function
         Function that maps a Chimera index :math:`(i, j, u, k)` in an
         math:`(m, n, t)` Chimera lattice to x- and y-coordinates such as
-        used by a plot.
+        those used by a plot.
 
     """
     import numpy as np
@@ -190,7 +190,7 @@ def chimera_node_placer_2d(m, n, t, scale=1., center=None, dim=2):
 
 
 def draw_chimera(G, **kwargs):
-    """Draw graph ``G`` in a :term:`Chimera` cross topology.
+    """Draw :term:`graph` ``G`` in a :term:`Chimera` cross topology.
 
     The biases of the nodes and edges can also be visualized on the plot
     via the ``linear_biases`` and ``quadratic_biases`` parameters,
@@ -231,7 +231,7 @@ def draw_chimera(G, **kwargs):
 
 
 def draw_chimera_embedding(G, *args, **kwargs):
-    """Draw an embedding onto the :term:`Chimera` graph ``G``, according to layout.
+    """Draw an embedding onto the :term:`Chimera` :term:`graph` ``G``, according to layout.
 
     If the ``interaction_edges`` parameter is specified, then only display the couplers in that
     list. If the ``embedded_graph`` parameter is specified, then only display the couplers between
@@ -240,7 +240,7 @@ def draw_chimera_embedding(G, *args, **kwargs):
     Parameters
     ----------
     G : NetworkX graph
-        Chimera graph or a subgraph of a Chimera graph.
+        Chimera graph or a :term:`subgraph` of a Chimera graph.
 
     emb : dict
         A dict of chains associated with each node in ``G``
@@ -250,13 +250,13 @@ def draw_chimera_embedding(G, *args, **kwargs):
     embedded_graph : NetworkX graph (optional, default None)
         Graph that contains all keys of ``emb`` as nodes. If specified,
         the edges of ``G`` are considered interactions if and only if they
-        exist between two chains of ``emb`` if their keys are connected by
+        exist between two chains of ``emb`` and if their keys are connected by
         an edge in ``embedded_graph``.
 
     interaction_edges : list (optional, default None)
         List of edges that will be used as interactions.
 
-    show_labels: boolean (optional, default False)
+    show_labels: boolean (optional, default ``False``)
         If ``True``, each chain in ``emb`` is labelled with its key.
 
     chain_color : dict (optional, default None)
@@ -268,9 +268,9 @@ def draw_chimera_embedding(G, *args, **kwargs):
     unused_color : tuple (optional, default (0.9,0.9,0.9,1.0))
         Color to use for nodes and edges of ``G`` which are not involved
         in chains, and edges which are neither chain edges nor interactions.
-        If unused_color is None, these nodes and edges will not be shown.
+        If this parameter is None, these nodes and edges will not be shown.
 
-    overlapped_embedding: boolean (optional, default False)
+    overlapped_embedding: boolean (optional, default ``False``)
         If ``True``, then chains in ``emb`` may overlap (contain
         the same vertices in G), and the drawing displays these overlaps as
         concentric circles.
@@ -285,7 +285,7 @@ def draw_chimera_embedding(G, *args, **kwargs):
 
 
 def draw_chimera_yield(G, **kwargs):
-    """Draw the given graph ``G`` with highlighted faults, according to layout.
+    """Draw the given :term:`graph` ``G`` with highlighted faults, according to layout.
 
     Parameters
     ----------
@@ -294,26 +294,20 @@ def draw_chimera_yield(G, **kwargs):
 
     unused_color : tuple or color string (optional, default (0.9,0.9,0.9,1.0))
         Color to use for nodes and edges of ``G`` which are not faults.
-        If unused_color is None, these nodes and edges will not be shown.
+        If this parameter is None, these nodes and edges will not be shown.
 
     fault_color : tuple or color string (optional, default (1.0,0.0,0.0,1.0))
         Color to represent nodes absent from the graph ``G``. Colors should be
         length-4 tuples of floats between 0 and 1, inclusive.
 
     fault_shape : string, optional (default 'x')
-        Shape of the fault nodes. Specification is as matplotlib.scatter
-        marker, one of 'so^>v<dph8'.
+       Shape of the fault nodes. Specification is the same as for the ``matplotlib.scatter``
+       marker, which is any of the following values: ``'s'``, ``'o'``, ``'^'``, ``'>'``,
+       ``'v'``, ``'<'``, ``'d'``, ``'p'``, ``'h'``, ``'8'``.
 
     fault_style : string, optional (default 'dashed')
-        Line style for edge faults as follows:
-
-        ``'solid'``
-
-        ``'dashed'``
-
-        ``'dotted'``
-
-        ``'dashdot'``
+       Line style for fault edges. The line style can be any of the following values:
+       ``'solid'``, ``'dashed'``, ``'dotted'``, ``'dashdot'``.
 
     kwargs : optional keywords
        Parameters in :func:`~networkx.drawing.nx_pylab.draw_networkx`, except for the ``pos`` parameter.

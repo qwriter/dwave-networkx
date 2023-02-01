@@ -4,7 +4,7 @@
 Graph Generators
 ****************
 
-Generators for graphs, such as the graphs (topologies) of D-Wave QPUs.
+Generators for graphs, such as the :term:`graph`s (also known as "topologies") of D-Wave QPUs.
 
 .. currentmodule:: dwave_networkx
 

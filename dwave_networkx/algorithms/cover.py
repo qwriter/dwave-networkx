@@ -26,9 +26,9 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
     `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
     and uses the :term:`sampler` to sample from it.
 
-    A vertex cover is a set of vertices such that each edge of the graph
+    A vertex cover is a set of vertices such that each edge of the :term:`graph`
     is incident with at least one vertex in the set. A minimum weighted
-    vertex cover is the vertex cover of minimum total node weight.
+    vertex cover is the vertex cover of minimum total node weight. [AL]_
 
     Parameters
     ----------
@@ -36,7 +36,7 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
         The graph on which to find a minimum weighted vertex cover.
 
     weight : string, optional (default None)
-        If :code:`None`, every node has equal weight. If a ``string``, use this node
+        If ``None``, every node has equal weight. If a ``string``, use this node
         attribute as the node weight. A node without this attribute is
         assumed to have maximum weight.
 
@@ -44,8 +44,8 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
@@ -67,9 +67,6 @@ def min_weighted_vertex_cover(G, weight=None, sampler=None, lagrange=2.0, **samp
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    Based on the formulation presented in [AL]_.
-
     """
     indep_nodes = set(maximum_weighted_independent_set(G, weight, sampler, lagrange, **sampler_args))
     return [v for v in G if v not in indep_nodes]
@@ -83,9 +80,9 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
     `vertex cover <https://en.wikipedia.org/wiki/Vertex_cover>`_
     and uses the :term:`sampler` to sample from it.
 
-    A vertex cover is a set of vertices such that each edge of the graph
+    A vertex cover is a set of vertices such that each edge of the :term:`graph`
     is incident with at least one vertex in the set. A minimum vertex cover
-    is the vertex cover of smallest size.
+    is the vertex cover of smallest size. [AL]_
 
     Parameters
     ----------
@@ -96,8 +93,8 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a QUBO.
-        A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
@@ -135,18 +132,12 @@ def min_vertex_cover(G, sampler=None, lagrange=2.0, **sampler_args):
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    Lucas 2014. [AL]_
-
     """
     return min_weighted_vertex_cover(G, None, sampler, lagrange, **sampler_args)
 
 
 def is_vertex_cover(G, vertex_cover):
-    """Determine whether the given set of vertices is a vertex cover of graph ``G``.
+    """Determine whether the given set of vertices is a vertex cover of :term:`graph` ``G``.
 
     A vertex cover is a set of vertices such that each edge of the graph
     is incident with at least one vertex in the set.
@@ -162,7 +153,7 @@ def is_vertex_cover(G, vertex_cover):
     Returns
     -------
     is_cover : bool
-        :code:`True`, if the given iterable forms a vertex cover.
+        ``True``, if the given iterable forms a vertex cover.
 
     Examples
     --------

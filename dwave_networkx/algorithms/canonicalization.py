@@ -25,7 +25,7 @@ def canonical_chimera_labeling(G, t=None):
     Parameters
     ----------
     G : NetworkX graph
-        A Chimera-structured graph.
+        A Chimera-structured :term:`graph`.
     t : int (optional, default 4)
         Size of the shore within each Chimera tile.
 

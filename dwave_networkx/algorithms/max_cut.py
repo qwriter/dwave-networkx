@@ -101,15 +101,15 @@ def weighted_maximum_cut(G, sampler=None, **sampler_args):
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a weighted maximum cut. Each edge in ``G`` should
-        have a numeric `weight` attribute.
+        The :term:`graph` on which to find a weighted maximum cut. Each edge in ``G`` should
+        have a numeric ``weight`` attribute.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (:erm:`QUBO`). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        Problem (:term:`QUBO`). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.

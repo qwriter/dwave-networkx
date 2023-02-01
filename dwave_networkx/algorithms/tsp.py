@@ -117,7 +117,7 @@ traveling_salesman = traveling_salesperson
 def traveling_salesperson_qubo(G, lagrange=None, weight='weight', missing_edge_weight=None):
     """Return the :term`QUBO` with ground states corresponding to a minimum TSP route.
 
-    If :math:`|G|` is the number of nodes in the graph, the resulting QUBO will have:
+    If :math:`|G|` is the number of nodes in the :term:`graph`, the resulting QUBO will have:
 
     * :math:`|G|^2` variables/nodes
     * :math:`2 |G|^2 (|G| - 1)` interactions/edges
@@ -145,7 +145,7 @@ def traveling_salesperson_qubo(G, lagrange=None, weight='weight', missing_edge_w
        QUBO with ground states corresponding to a minimum travelling
        salesperson route. The QUBO variables are labelled ``(c, t)`` where ``c``
        is a node in ``G`` and ``t`` is the time index. For instance, if ``('a', 0)``
-       is 1 in the ground state, that means the node ``'a'`` is visited first.
+       is 1 in the ground state, then node ``'a'`` is visited first.
 
     """
     N = G.number_of_nodes()
@@ -225,7 +225,7 @@ def is_hamiltonian_path(G, route):
     ----------
     G : NetworkX graph
 
-        The graph on which to check the ``route``.
+        The :term:`graph` on which to check the ``route``.
 
     route : list
 
@@ -234,7 +234,7 @@ def is_hamiltonian_path(G, route):
     Returns
     -------
     is_valid : bool
-        :code:`True`, if ``route`` forms a valid travelling salesperson route.
+        ``True``, if ``route`` forms a valid travelling salesperson route.
 
     """
 

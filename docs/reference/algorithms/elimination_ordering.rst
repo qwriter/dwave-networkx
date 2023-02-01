@@ -4,8 +4,8 @@ Elimination Ordering
 
 Many algorithms for NP-hard problems are exponential in treewidth. However,
 finding a lower bound on treewidth is in itself NP-complete. [GD]_ describes
-a branch-and-bound algorithm for computing the treewidth of an undirected graph
-by searching in the space of *perfect elimination ordering* of vertices of
+a branch-and-bound algorithm for computing the treewidth of an undirected :term:`graph`
+by searching in the space of *perfect elimination ordering* of the vertices of
 the graph.
 
 A *clique* of a graph is a fully connected subset of vertices; that is, every

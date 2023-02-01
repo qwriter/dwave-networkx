@@ -2,7 +2,7 @@
 Matching
 ********
 
-A matching is a subset of graph edges in which no vertex occurs more than once.
+A matching is a subset of :term:`graph` edges in which no vertex occurs more than once.
 
 .. figure:: ../../_images/Match.png
    :name: Matching
@@ -11,7 +11,7 @@ A matching is a subset of graph edges in which no vertex occurs more than once.
    :scale: 40 %
 
    A matching for a :term:`Chimera` unit cell: no vertex is incident to more than one
-   edge in the set of blue edges
+   edge in the set of blue edges.
 
 .. automodule:: dwave_networkx.algorithms.matching
 .. autosummary::

@@ -42,19 +42,19 @@ def is_simplicial(G, n):
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to check whether node ``n`` is simplicial.
+        The :term:`graph` on which to check whether node ``n`` is simplicial.
     n : node
         A node in graph ``G``.
 
     Returns
     -------
     is_simplicial : bool
-        :code:`True`, if its neighbors form a clique.
+        ``True``, if its neighbors form a clique.
 
     Examples
     --------
     This example checks whether node ``0`` is simplicial for two graphs: ``G``, a
-    single Chimera unit cell, which is bipartite, and ``K_5``, which is the :math:`K_5`
+    single :term:`Chimera` unit cell, which is bipartite, and ``K_5``, which is the :math:`K_5`
     complete graph.
 
     >>> G = dnx.chimera_graph(1, 1, 4)
@@ -69,19 +69,19 @@ def is_simplicial(G, n):
 
 
 def is_almost_simplicial(G, n):
-    """Determine whether a node n in ``G`` is almost simplicial.
+    """Determine whether a node ``n`` in ``G`` is almost simplicial.
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to check whether node n is almost simplicial.
+        The :term:`graph` on which to check whether node ``n`` is almost simplicial.
     n : node
         A node in graph ``G``.
 
     Returns
     -------
     is_almost_simplicial : bool
-        :code:`True`, if all but one of its neighbors induces a clique.
+        ``True``, if all but one of its neighbors induces a clique.
 
     Examples
     --------
@@ -103,7 +103,7 @@ def is_almost_simplicial(G, n):
 
 
 def minor_min_width(G):
-    """Compute a lower bound for the treewidth of graph ``G``.
+    """Compute a lower bound for the treewidth of :term:`graph` ``G``. [GD]_
 
     Parameters
     ----------
@@ -123,11 +123,6 @@ def minor_min_width(G):
     >>> K_7 = nx.complete_graph(7)
     >>> dnx.minor_min_width(K_7)
     6
-
-    References
-    ----------
-    Based on the algorithm presented in [GD]_.
-
     """
     # we need only deal with the adjacency structure of G. We will also
     # be manipulating it directly so let's go ahead and make a new one
@@ -170,8 +165,8 @@ def minor_min_width(G):
 
 
 def min_fill_heuristic(G):
-    """Compute an upper bound on the treewidth of graph ``G`` based on
-    the min-fill heuristic for the elimination ordering.
+    """Compute an upper bound on the treewidth of :term:`graph` ``G`` based on
+    the min-fill heuristic for the elimination ordering. [GD]_
 
     Parameters
     ----------
@@ -193,11 +188,6 @@ def min_fill_heuristic(G):
 
     >>> K_4 = nx.complete_graph(4)
     >>> tw, order = dnx.min_fill_heuristic(K_4)
-
-    References
-    ----------
-    Based on the algorithm presented in [GD]_.
-
     """
     # we need only deal with the adjacency structure of G. We will also
     # be manipulating it directly so let's go ahead and make a new one
@@ -240,8 +230,8 @@ def _min_fill_needed_edges(adj, n):
 
 
 def min_width_heuristic(G):
-    """Compute an upper bound on the treewidth of graph ``G`` based on
-    the min-width heuristic for the elimination ordering.
+    """Compute an upper bound on the treewidth of :term:`graph` ``G`` based on
+    the min-width heuristic for the elimination ordering. [GD]_
 
     Parameters
     ----------
@@ -263,11 +253,6 @@ def min_width_heuristic(G):
 
     >>> K_4 = nx.complete_graph(4)
     >>> tw, order = dnx.min_width_heuristic(K_4)
-
-    References
-    ----------
-    Based on the algorithm presented in [GD]_.
-
     """
     # we need only deal with the adjacency structure of G. We will also
     # be manipulating it directly so let's go ahead and make a new one
@@ -300,8 +285,8 @@ def min_width_heuristic(G):
 
 
 def max_cardinality_heuristic(G):
-    """Compute an upper bound on the treewidth of graph ``G`` based on
-    the max-cardinality heuristic for the elimination ordering.
+    """Compute an upper bound on the treewidth of :term:`graph` ``G`` based on
+    the max-cardinality heuristic for the elimination ordering. [GD]_
 
     Parameters
     ----------
@@ -323,11 +308,6 @@ def max_cardinality_heuristic(G):
 
     >>> K_4 = nx.complete_graph(4)
     >>> tw, order = dnx.max_cardinality_heuristic(K_4)
-
-    References
-    ----------
-    Based on the algorithm presented in [GD]_.
-
     """
     # we need only deal with the adjacency structure of G. We will also
     # be manipulating it directly so let's go ahead and make a new one
@@ -405,7 +385,7 @@ def elimination_order_width(G, order):
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to compute the width of the tree decomposition.
+        The :term:`graph` on which to compute the width of the tree decomposition.
 
     order : list
         The elimination order. Must be a list of all the variables
@@ -460,7 +440,7 @@ def elimination_order_width(G, order):
 
 
 def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=None):
-    """Compute the treewidth of graph ``G`` and a corresponding perfect elimination ordering.
+    """Compute the treewidth of :term:`graph` ``G`` and a corresponding perfect elimination ordering. [GD]_
 
     Parameters
     ----------
@@ -468,7 +448,7 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
         The graph on which to compute the treewidth and perfect elimination ordering.
 
     elimination_order: list (optional, Default None)
-        An elimination order used as an initial best-known order. If a good
+        An elimination order used as an initial, best-known order. If a good
         order is provided, it may speed up computation. If not provided, the
         initial order is generated using the min-fill heuristic.
 
@@ -479,7 +459,7 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
     Returns
     -------
     treewidth : int
-        The treewidth of graph G.
+        The treewidth of graph ``G``.
     order : list
         An elimination order that induces the treewidth.
 
@@ -492,10 +472,6 @@ def treewidth_branch_and_bound(G, elimination_order=None, treewidth_upperbound=N
     >>> K_7 = nx.complete_graph(7)
     >>> dnx.treewidth_branch_and_bound(K_7, [0, 1, 2, 3, 4, 5, 6])
     (6, [0, 1, 2, 3, 4, 5, 6])
-
-    References
-    ----------
-    Based on the algorithm presented in [GD]_.
     """
     # empty graphs have treewidth 0 and the nodes can be eliminated in
     # any order
@@ -807,7 +783,7 @@ def _theorem6p4():
 
 
 def chimera_elimination_order(m, n=None, t=4, coordinates=False):
-    """Provide a variable elimination order for a :term:`Chimera` graph.
+    """Provide a variable elimination order for a :term:`Chimera` :term:`graph`.
 
     A graph defined by :func:`.chimera_graph()` has treewidth :math:`max(m,n)*t`.
     This function outputs a variable elimination order inducing a tree
@@ -822,7 +798,7 @@ def chimera_elimination_order(m, n=None, t=4, coordinates=False):
     t : int (optional, default 4)
         Size of the shore within each Chimera tile.
     coordinates bool (optional, default False):
-        If :code:`True`, the elimination order is given in terms of 4-term Chimera
+        If ``True``, the elimination order is given in terms of 4-term Chimera
         coordinates; otherwise, given in linear indices.
         
     Returns
@@ -868,10 +844,10 @@ def chimera_elimination_order(m, n=None, t=4, coordinates=False):
 
 
 def pegasus_elimination_order(n, coordinates=False):
-    """Provide a variable elimination order for the :term:`Pegasus` graph.
+    """Provide a variable elimination order for the :term:`Pegasus` :term:`graph`.
 
-    The treewidth of a Pegasus graph :func:`.pegasus_graph()` is lower-bounded by
-    :math:`12n-11` and upper bounded by :math:`12n-4` [BBRR]_.
+    The treewidth of a Pegasus graph :func:`.pegasus_graph()` that has a lower bound of
+    :math:`12n-11` and an upper bound of :math:`12n-4`. [BBRR]_
 
     Simple Pegasus variable elimination order rules are as follows:
 
@@ -879,13 +855,13 @@ def pegasus_elimination_order(n, coordinates=False):
        - Eliminate horizontal qubits in each column once their adjacent vertical
          qubits have been eliminated
 
-    Args
-    ----
+    Parameters
+    ----------
     n : int
         The size parameter for the Pegasus lattice.
 
     coordinates : bool, optional (default False)
-        If :code:`True`, the elimination order is given in terms of 4-term Pegasus
+        If ``True``, the elimination order is given in terms of 4-term Pegasus
         coordinates; otherwise, given in linear indices.
 
     Returns
@@ -920,23 +896,23 @@ def pegasus_elimination_order(n, coordinates=False):
 
     
 def zephyr_elimination_order(m, t=4, coordinates=False):
-    """Provide a variable elimination order for the :term:`Zephyr` graph.
+    """Provide a variable elimination order for the :term:`Zephyr` :term:`graph`.
 
-    The treewidth of a Zephyr graph :func:`.zephyr_graph()` is upper-bounded by
-    :math:`4tm+2t` and lower-bounded by :math:`4tm` [BRK]_.
+    The treewidth of a Zephyr graph :func:`.zephyr_graph()` has an upper bound of
+    :math:`4tm+2t` and a lower bound of :math:`4tm`. [BRK]_
     
     Simple Zephyr variable elimination rules are as follows:
        - Eliminate vertical qubits, one column at a time
        - Eliminate horizontal qubits in each column from top to bottom
 
-    Args
-    ----
+    Parameters
+    ----------
     m : int
         Grid parameter for the Zephyr lattice.
     t : int
         Tile parameter for the Zephyr lattice.
     coordinates : bool, optional (default False)
-        If :code:`True`, the elimination order is given in terms of 4-term Zephyr
+        If ``True``, the elimination order is given in terms of 4-term Zephyr
         coordinates; otherwise, given in linear indices.
 
     Returns

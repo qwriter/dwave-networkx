@@ -71,7 +71,7 @@ def matching_bqm(G):
 
 
 def maximal_matching_bqm(G, lagrange=None):
-    """Find a :term:`binary quadratic model` for the graph's maximal matchings.
+    """Find a binary quadratic model (:term:`BQM`) for the :term:`graph`'s maximal matchings.
 
     A matching is a subset of edges in which no node occurs more than
     once. A maximal matching is one in which no edges from ``G`` can be
@@ -90,15 +90,15 @@ def maximal_matching_bqm(G, lagrange=None):
 
     lagrange : float (optional)
         The Lagrange multiplier for the matching constraint. Should be positive
-        and greater than `max_degree - 2`.
-        Defaults to `1.25 * (max_degree - 2)`.
+        and greater than :math:`max_degree - 2`.
+        Defaults to :math:`1.25 * (max_degree - 2)`.
 
     Returns
     -------
     bqm : :class:`dimod.BinaryQuadraticModel`
         A binary quadratic model with ground states corresponding to a maximal
         matching. The variables of the BQM are the edges of ``G`` as frozensets.
-        The BQM's ground state energy is 0 by construction.
+        The BQM's ground state energy is :math:`0` by construction.
 
     """
     bqm = matching_bqm(G)
@@ -133,7 +133,7 @@ def maximal_matching_bqm(G, lagrange=None):
 
 
 def min_maximal_matching_bqm(G, maximal_lagrange=2, matching_lagrange=None):
-    """Find a :term:`binary quadratic model` for the graph's minimum maximal matchings.
+    """Find a binary quadratic model (:term:`BQM`) for the :term:`graph`'s minimum maximal matchings.
 
     A matching is a subset of edges in which no node occurs more than
     once. A maximal matching is one in which no edges from ``G`` can be
@@ -153,8 +153,8 @@ def min_maximal_matching_bqm(G, maximal_lagrange=2, matching_lagrange=None):
 
     matching_lagrange : float (optional)
         The Lagrange multiplier for the matching constraint. Should be positive
-        and greater than `maximal_lagrange * max_degree - 2`.
-        Defaults to `1.25 * (maximal_lagrange * max_degree - 2)`.
+        and greater than :math:`maximal_lagrange * max_degree - 2`.
+        Defaults to :math:`1.25 * (maximal_lagrange * max_degree - 2)`.
 
     Returns
     -------
@@ -190,27 +190,25 @@ def maximal_matching(G, sampler=None, **sampler_args):
     added without violating the matching rule.
 
     Finding maximal matchings can be done is polynomial time, so this method
-    is only useful pedagogically.
-
-    This algorithm is based on the formulation in [AL]_.
+    is only useful pedagogically. [AL]_
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a maximal matching.
+        The :term:`graph` on which to find a maximal matching.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to pass to the sampler.
 
     Returns
     -------
@@ -244,27 +242,25 @@ def min_maximal_matching(G, sampler=None, **sampler_args):
     A `matching <https://w.wiki/r9s>`_ is a subset of edges in which no node occurs more than
     once. A maximal matching is one in which no edges from ``G`` can be
     added without violating the matching rule. A minimum maximal
-    matching is the smallest maximal matching for ``G``.
-
-    This algorithm is based on the formulation in [AL]_.
+    matching is the smallest maximal matching for ``G``. [AL]_
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a minimum maximal matching.
+        The :term:`graph` on which to find a minimum maximal matching.
 
     sampler
-        A binary quadratic model sampler. A sampler is a process that
+        A binary quadratic model (:term:`BQM`) sampler. A sampler is a process that
         samples from low energy states in models defined by an Ising
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
     sampler_args
-        Additional keyword parameters are passed to the sampler.
+        Additional keyword parameters to be passed to the sampler.
 
     Returns
     -------

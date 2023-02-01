@@ -26,17 +26,17 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
     """Return an approximate maximum weighted independent set.
 
     Defines a :term:`QUBO` with ground states corresponding to a
-    maximum weighted independent set and uses the :term:`sampler` to sample
-    from it.
+    maximum weighted `independent set <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
+    and uses the :term:`sampler` to sample from it.
 
-    An independent set is a set of nodes such that the subgraph
+    An independent set is a set of nodes such that the :term:`subgraph`
     of ``G`` induced by these nodes contains no edges. A maximum
-    independent set is an independent set of maximum total node weight.
+    independent set is an independent set of maximum total node weight. [AL]_
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a maximum cut weighted independent set.
+        The :term:`graph` on which to find a maximum weighted independent set.
 
     weight : string, optional (default None)
         If None, every node has equal weight. If a ``string``, use this node
@@ -47,8 +47,8 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
         A binary quadratic model sampler. A sampler is a process that
         samples from low energy states in models defined by an :term:`Ising`
         equation or a Quadratic Unconstrained Binary Optimization
-        Problem (QUBO). A sampler is expected to have a :meth:`~dimod.Sampler.sample_qubo`
-        and :meth:`~dimod.Sampler.sample_ising` method. A sampler is expected to return an
+        Problem (QUBO). A sampler is expected to have a ``sample_qubo``
+        and ``sample_ising`` method. A sampler is expected to return an
         iterable of samples, in order of increasing energy. If no
         sampler is provided, one must be provided using the
         :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
@@ -71,14 +71,6 @@ def maximum_weighted_independent_set(G, weight=None, sampler=None, lagrange=2.0,
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    `Independent Set on Wikipedia <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
-
-    Lucas. 2014. [AL]_
-
     """
     # Get a QUBO representation of the problem
     Q = maximum_weighted_independent_set_qubo(G, weight, lagrange)
@@ -98,17 +90,17 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
     """Return an approximate maximum independent set.
 
     Defines a :term:`QUBO` with ground states corresponding to a
-    maximum independent set and uses the :term:`sampler` to sample from
-    it.
+    maximum `independent set <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
+    and uses the :term:`sampler` to sample from it.
 
     An independent set is a set of nodes such that the subgraph
     of ``G`` induced by these nodes contains no edges. A maximum
-    independent set is an independent set of the largest possible size.
+    independent set is an independent set of the largest possible size. [AL]_
 
     Parameters
     ----------
     G : NetworkX graph
-        The graph on which to find a maximum cut independent set.
+        The graph on which to find a maximum independent set.
 
     sampler
         A binary quadratic model sampler. A sampler is a process that
@@ -150,14 +142,6 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
     Samplers by their nature may not return the optimal solution. This
     function does not attempt to confirm the quality of the returned
     sample.
-
-    References
-    ----------
-
-    `Independent Set on Wikipedia <https://en.wikipedia.org/wiki/Independent_set_(graph_theory)>`_
-
-    Lucas. 2014. [AL]_
-
     """
     return maximum_weighted_independent_set(G, None, sampler, lagrange, **sampler_args)
 
@@ -165,13 +149,13 @@ def maximum_independent_set(G, sampler=None, lagrange=2.0, **sampler_args):
 def is_independent_set(G, indep_nodes):
     """Determine whether the given nodes form an independent set.
 
-    An independent set is a set of nodes such that the subgraph
+    An independent set is a set of nodes such that the :term:`subgraph`
     of ``G`` induced by these nodes contains no edges.
 
     Parameters
     ----------
     G : NetworkX graph
-       The graph on which to check the independent set.
+       The :term:`graph` on which to check the independent set.
 
     indep_nodes : list
        List of nodes that form a maximum independent set, as
@@ -180,7 +164,7 @@ def is_independent_set(G, indep_nodes):
     Returns
     -------
     is_independent : bool
-        :code:`True`, if ``indep_nodes`` form an independent set.
+        ``True``, if ``indep_nodes`` form an independent set.
 
     Example
     -------

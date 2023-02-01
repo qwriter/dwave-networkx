@@ -3,8 +3,8 @@ Introduction
 ============
 
 D-Wave NetworkX provides tools for working with :term:`Chimera`, :term:`Pegasus`,
-and :term:`Zephyr` graphs and implementations of graph-theory algorithms
-on the D-Wave system and other binary quadratic model :term:`sampler`\ s;
+and :term:`Zephyr` :term:`graph`s and implementations of graph-theory algorithms
+on the D-Wave system and other :term:`binary quadratic model` (BQM) :term:`sampler`\ s;
 for example, functions such as :meth:`~dwave_networkx.drawing.chimera_layout.draw_chimera`
 provide easy visualization for Chimera graphs; functions such
 as :meth:`~dwave_networkx.algorithms.max_cut.maximum_cut` 
@@ -12,9 +12,9 @@ or :meth:`~dwave_networkx.algorithms.cover.min_vertex_cover` provide graph algor
 optimization problems that fit well with the D-Wave system.
 
 Like the D-Wave system, all other supported samplers must have
-:meth:`~dimod.Sampler.sample_qubo` and :meth:`~dimod.Sampler.sample_ising` methods 
+*sample_qubo* and *sample_ising* methods
 for solving :term:`Ising` and :term:`QUBO` models 
-and return an ``iterable`` of samples in order of increasing energy. You can set
+and return an iterable of samples in order of increasing energy. You can set
 a default sampler using the :meth:`~dwave_networkx.default_sampler.set_default_sampler` function.
 
 * For an introduction to quantum processing unit (QPU) topologies such as the

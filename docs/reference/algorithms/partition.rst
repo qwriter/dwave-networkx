@@ -3,7 +3,7 @@ Partitioning
 *************
 
 A :math:`k`-partition consists of :math:`k` disjoint and equally sized subsets of a
-graph's vertices such that the total number of edges between nodes in
+:term:`graph`'s vertices such that the total number of edges between nodes in
 distinct subsets is as small as possible.
 
 .. figure:: ../../_images/Partitioning.png
